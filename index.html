@@ -1,15 +1,17 @@
+html
+Preview
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Operai Colombia</title>
+    <title>OPERAI COLOMBIA</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: none; /* Ocultamos el cursor normal */
+            cursor: none;
         }
 
         :root {
@@ -28,9 +30,14 @@
             background: #ffffff;
             color: var(--negro);
             line-height: 1.5;
+            text-transform: uppercase; /* TODO EN MAYÚSCULAS */
         }
 
-        /* ========== REPRODUCTOR DE MÚSICA ========== */
+        /* ========== REPRODUCTOR DE MÚSICA AUTOMÁTICO ========== */
+        .audio-oculto {
+            display: none;
+        }
+
         .reproductor {
             position: fixed;
             bottom: 2rem;
@@ -155,7 +162,7 @@
             font-size: clamp(3.5rem, 12vw, 9rem);
             line-height: 1;
             font-weight: 800;
-            letter-spacing: -3px;
+            letter-spacing: 3px;
             margin-bottom: 2rem;
             background: linear-gradient(90deg, var(--acento), var(--turquesa));
             -webkit-background-clip: text;
@@ -191,7 +198,7 @@
             font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 700;
             margin-bottom: 3rem;
-            letter-spacing: -1px;
+            letter-spacing: 2px;
             color: var(--acento);
         }
 
@@ -272,7 +279,6 @@
                 height: 50px;
                 font-size: 1rem;
             }
-            /* En móvil quitamos cursor personalizado */
             .cursor-dot, .cursor-ring { display: none; }
             * { cursor: auto; }
         }
@@ -284,84 +290,104 @@
     <div class="cursor-dot"></div>
     <div class="cursor-ring"></div>
 
-    <!-- REPRODUCTOR DE MÚSICA -->
+    <!-- MÚSICA QUE SE REPRODUCE AUTOMÁTICAMENTE -->
+    <div class="audio-oculto">
+        <audio id="musica" src="FortunateSon.mp3" loop autoplay>
+            Tu navegador no soporta audio.
+        
+    </div>
+
+    <!-- BOTÓN DE REPRODUCIR/PAUSAR -->
     <div class="reproductor">
-        <audio id="musica" src="fortunateSon.mp3" loop>
-        <button class="btn-musica" id="botonMusica" onclick="reproducirMusica()">▶</button>
+        <button class="btn-musica" id="botonMusica">⏸</button>
     </div>
 
     <header>
         <div class="logo-text">OPERAI</div>
         <nav>
-            <a href="#inicio">Inicio</a>
-            <a href="#nosotros">Nosotros</a>
-            <a href="#servicios">Servicios</a>
-            <a href="#contacto">Contacto</a>
+            <a href="#inicio">INICIO</a>
+            <a href="#nosotros">NOSOTROS</a>
+            <a href="#servicios">SERVICIOS</a>
+            <a href="#contacto">CONTACTO</a>
         </nav>
     </header>
 
     <section class="hero visible" id="inicio">
-        <h1>Operai<br>Colombia</h1>
-        <p>Soluciones confiables y profesionales para tu empresa. Calidad, compromiso y tecnología en cada proyecto.</p>
-        <a href="#contacto" class="btn">Solicitar Información</a>
+        <h1>OPERAI<br>COLOMBIA</h1>
+        <p>SOLUCIONES CONFIABLES Y PROFESIONALES PARA TU EMPRESA. CALIDAD, COMPROMISO Y TECNOLOGÍA EN CADA PROYECTO.</p>
+        <a href="#contacto" class="btn">SOLICITAR INFORMACIÓN</a>
     </section>
 
     <section id="nosotros">
-        <h2>¿Quiénes Somos?</h2>
+        <h2>¿QUIÉNES SOMOS?</h2>
         <p class="about-text">
-            Somos una empresa comprometida con ofrecer soluciones integrales en Colombia. 
-            Nuestra experiencia y dedicación nos permiten brindar un servicio de calidad, 
-            adaptado a las necesidades reales de nuestros clientes. Trabajamos con 
-            compromiso, transparencia y excelencia en cada proyecto que emprendemos.
+            SOMOS UNA EMPRESA COMPROMETIDA CON OFRECER SOLUCIONES INTEGRALES EN COLOMBIA. 
+            NUESTRA EXPERIENCIA Y DEDICACIÓN NOS PERMITEN BRINDAR UN SERVICIO DE CALIDAD, 
+            ADAPTADO A LAS NECESIDADES REALES DE NUESTROS CLIENTES. TRABAJAMOS CON 
+            COMPROMISO, TRANSPARENCIA Y EXCELENCIA EN CADA PROYECTO QUE EMPRENDEMOS.
         </p>
     </section>
 
     <section id="servicios">
-        <h2>Nuestros Servicios</h2>
+        <h2>NUESTROS SERVICIOS</h2>
         <div class="services-grid">
             <div class="service-card">
-                <h3>🚀 Soluciones Empresariales</h3>
-                <p>Brindamos respuestas integrales adaptadas a los retos y necesidades de tu organización en el mercado actual.</p>
+                <h3>🚀 SOLUCIONES EMPRESARIALES</h3>
+                <p>BRINDAMOS RESPUESTAS INTEGRALES ADAPTADAS A LOS RETOS Y NECESIDADES DE TU ORGANIZACIÓN EN EL MERCADO ACTUAL.</p>
             </div>
             <div class="service-card">
-                <h3>💡 Consultoría y Estrategia</h3>
-                <p>Acompañamos tu crecimiento con análisis, planificación y soluciones que generan valor real y sostenible.</p>
+                <h3>💡 CONSULTORÍA Y ESTRATEGIA</h3>
+                <p>ACOMPAÑAMOS TU CRECIMIENTO CON ANÁLISIS, PLANIFICACIÓN Y SOLUCIONES QUE GENERAN VALOR REAL Y SOSTENIBLE.</p>
             </div>
             <div class="service-card">
-                <h3>🔧 Soporte y Desarrollo</h3>
-                <p>Soluciones personalizadas y acompañamiento constante para garantizar el mejor funcionamiento de tu operación.</p>
+                <h3>🔧 SOPORTE Y DESARROLLO</h3>
+                <p>SOLUCIONES PERSONALIZADAS Y ACOMPAÑAMIENTO CONSTANTE PARA GARANTIZAR EL MEJOR FUNCIONAMIENTO DE TU OPERACIÓN.</p>
             </div>
         </div>
     </section>
 
     <section class="contact-section" id="contacto">
-        <h2>Contáctanos</h2>
-        <p>📍 Colombia</p>
+        <h2>CONTÁCTANOS</h2>
+        <p>📍 COLOMBIA</p>
         <p>📞 +57 317 423 5796</p>
-        <p>📧 operaicolombia@gmail.com</p>
+        <p>📧 OPERAICOLOMBIA@GMAIL.COM</p>
     </section>
 
     <footer>
-        <p>&copy; 2026 Operai Colombia. Todos los derechos reservados.</p>
+        <p>&copy; 2026 OPERAI COLOMBIA. TODOS LOS DERECHOS RESERVADOS.</p>
     </footer>
 
     <script>
         // ====== REPRODUCIR Y PAUSAR MÚSICA ======
         const audio = document.getElementById('musica');
         const boton = document.getElementById('botonMusica');
-        let reproduciendo = false;
+        let reproduciendo = true; // EMPIEZA SONANDO AUTOMÁTICAMENTE
 
-        function reproducirMusica() {
-            if (!reproduciendo) {
-                audio.play();
+        // Intentar reproducir automáticamente al cargar la página
+        window.addEventListener('DOMContentLoaded', function() {
+            audio.play().then(() => {
                 boton.textContent = '⏸';
                 reproduciendo = true;
+            }).catch(err => {
+                // Si el navegador bloquea el auto-reproducción, esperar clic del usuario
+                boton.textContent = '▶';
+                reproduciendo = false;
+            });
+        });
+
+        // Botón para pausar/reproducir manualmente
+        boton.addEventListener('click', function() {
+            if (!reproduciendo) {
+                audio.play().then(() => {
+                    boton.textContent = '⏸';
+                    reproduciendo = true;
+                });
             } else {
                 audio.pause();
                 boton.textContent = '▶';
                 reproduciendo = false;
             }
-        }
+        });
 
         // ====== ANIMACIÓN AL HACER SCROLL ======
         const sections = document.querySelectorAll('section');
