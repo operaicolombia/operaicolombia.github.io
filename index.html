@@ -9,12 +9,12 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            cursor: none; /* Ocultamos el cursor normal */
         }
 
         :root {
             --negro: #0a0a0a;
-            --gris: #666666;
-            --claro: #f8f8f8;
+            --gris: #e0e0e0;
             --acento: #2D0CE2;
             --turquesa: #11E7DB;
         }
@@ -29,6 +29,38 @@
             color: var(--negro);
             line-height: 1.5;
         }
+
+        /* ========== CURSOR PERSONALIZADO ========== */
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(90deg, var(--acento), var(--turquesa));
+            border-radius: 50%;
+            position: fixed;
+            z-index: 9999;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor-ring {
+            width: 40px;
+            height: 40px;
+            border: 2px solid;
+            border-image: linear-gradient(90deg, var(--acento), var(--turquesa)) 1;
+            border-radius: 50%;
+            position: fixed;
+            z-index: 9998;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: width 0.15s, height 0.15s, opacity 0.15s;
+        }
+
+        .cursor-ring.hover {
+            width: 70px;
+            height: 70px;
+            opacity: 0.7;
+        }
+        /* ========================================== */
 
         header {
             position: fixed;
@@ -104,7 +136,7 @@
         .hero p {
             font-size: clamp(1.1rem, 2.5vw, 1.6rem);
             max-width: 700px;
-            color: var(--gris);
+            color: #555;
             margin-bottom: 3rem;
         }
 
@@ -130,12 +162,13 @@
             font-weight: 700;
             margin-bottom: 3rem;
             letter-spacing: -1px;
+            color: var(--acento);
         }
 
         .about-text {
             font-size: 1.15rem;
             max-width: 800px;
-            color: var(--gris);
+            color: #555;
             line-height: 1.8;
         }
 
@@ -155,7 +188,7 @@
         }
 
         .service-card:hover {
-            border-color: var(--acento);
+            border-color: var(--turquesa);
             transform: translateY(-8px);
             box-shadow: 0 20px 40px rgba(45, 12, 226, 0.08);
         }
@@ -167,7 +200,7 @@
         }
 
         .service-card p {
-            color: var(--gris);
+            color: #666;
             line-height: 1.7;
         }
 
@@ -180,7 +213,7 @@
             padding: 3rem 4rem;
             border-top: 1px solid #eee;
             text-align: center;
-            color: var(--gris);
+            color: #777;
             font-size: 0.95rem;
         }
 
@@ -200,10 +233,17 @@
             .hero {
                 padding-top: 10rem;
             }
+            /* En móvil quitamos cursor personalizado */
+            .cursor-dot, .cursor-ring { display: none; }
+            * { cursor: auto; }
         }
     </style>
 </head>
 <body>
+
+    <!-- ELEMENTOS DEL CURSOR PERSONALIZADO -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
 
     <header>
         <div class="logo-text">OPERAI</div>
@@ -239,7 +279,7 @@
                 <p>Brindamos respuestas integrales adaptadas a los retos y necesidades de tu organización en el mercado actual.</p>
             </div>
             <div class="service-card">
-                <h3>💡 Consultoría y Estrategia, Tecnología y Desarrollo de Software</h3>
+                <h3>💡 Consultoría y Estrategia</h3>
                 <p>Acompañamos tu crecimiento con análisis, planificación y soluciones que generan valor real y sostenible.</p>
             </div>
             <div class="service-card">
@@ -261,9 +301,8 @@
     </footer>
 
     <script>
-        // Animación al hacer scroll
+        // ====== ANIMACIÓN AL HACER SCROLL ======
         const sections = document.querySelectorAll('section');
-        
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -274,6 +313,45 @@
 
         sections.forEach(section => {
             observer.observe(section);
+        });
+
+        // ====== CURSOR PERSONALIZADO EFECTO SUAVE ======
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorRing = document.querySelector('.cursor-ring');
+
+        let dotX = 0, dotY = 0;
+        let ringX = 0, ringY = 0;
+        let mouseX = 0, mouseY = 0;
+
+        // Seguimiento de la posición del mouse
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        // Animación suave con retraso
+        function animateCursor() {
+            // El punto va justo donde está el mouse
+            dotX = mouseX;
+            dotY = mouseY;
+            cursorDot.style.left = `${dotX}px`;
+            cursorDot.style.top = `${dotY}px`;
+
+            // El anillo sigue con retraso suave
+            ringX += (mouseX - ringX) * 0.1;
+            ringY += (mouseY - ringY) * 0.1;
+            cursorRing.style.left = `${ringX}px`;
+            cursorRing.style.top = `${ringY}px`;
+
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Agrandar anillo al pasar sobre enlaces y botones
+        const hoverElements = document.querySelectorAll('a, .service-card, .btn');
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursorRing.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
         });
     </script>
 
