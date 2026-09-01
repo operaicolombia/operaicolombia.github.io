@@ -30,6 +30,36 @@
             line-height: 1.5;
         }
 
+        /* ========== REPRODUCTOR DE MÚSICA ========== */
+        .reproductor {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 100;
+        }
+
+        .btn-musica {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(90deg, var(--acento), var(--turquesa));
+            border: none;
+            color: white;
+            font-size: 1.3rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(45, 12, 226, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-musica:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(45, 12, 226, 0.4);
+        }
+        /* =========================================== */
+
         /* ========== CURSOR PERSONALIZADO ========== */
         .cursor-dot {
             width: 8px;
@@ -233,6 +263,15 @@
             .hero {
                 padding-top: 10rem;
             }
+            .reproductor {
+                bottom: 1rem;
+                right: 1rem;
+            }
+            .btn-musica {
+                width: 50px;
+                height: 50px;
+                font-size: 1rem;
+            }
             /* En móvil quitamos cursor personalizado */
             .cursor-dot, .cursor-ring { display: none; }
             * { cursor: auto; }
@@ -244,6 +283,12 @@
     <!-- ELEMENTOS DEL CURSOR PERSONALIZADO -->
     <div class="cursor-dot"></div>
     <div class="cursor-ring"></div>
+
+    <!-- REPRODUCTOR DE MÚSICA -->
+    <div class="reproductor">
+        <audio id="musica" src="FortunateSon.mp3" loop>
+        <button class="btn-musica" id="botonMusica" onclick="reproducirMusica()">▶</button>
+    </div>
 
     <header>
         <div class="logo-text">OPERAI</div>
@@ -301,6 +346,23 @@
     </footer>
 
     <script>
+        // ====== REPRODUCIR Y PAUSAR MÚSICA ======
+        const audio = document.getElementById('musica');
+        const boton = document.getElementById('botonMusica');
+        let reproduciendo = false;
+
+        function reproducirMusica() {
+            if (!reproduciendo) {
+                audio.play();
+                boton.textContent = '⏸';
+                reproduciendo = true;
+            } else {
+                audio.pause();
+                boton.textContent = '▶';
+                reproduciendo = false;
+            }
+        }
+
         // ====== ANIMACIÓN AL HACER SCROLL ======
         const sections = document.querySelectorAll('section');
         const observer = new IntersectionObserver((entries) => {
@@ -323,21 +385,17 @@
         let ringX = 0, ringY = 0;
         let mouseX = 0, mouseY = 0;
 
-        // Seguimiento de la posición del mouse
         document.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
         });
 
-        // Animación suave con retraso
         function animateCursor() {
-            // El punto va justo donde está el mouse
             dotX = mouseX;
             dotY = mouseY;
             cursorDot.style.left = `${dotX}px`;
             cursorDot.style.top = `${dotY}px`;
 
-            // El anillo sigue con retraso suave
             ringX += (mouseX - ringX) * 0.1;
             ringY += (mouseY - ringY) * 0.1;
             cursorRing.style.left = `${ringX}px`;
@@ -348,7 +406,7 @@
         animateCursor();
 
         // Agrandar anillo al pasar sobre enlaces y botones
-        const hoverElements = document.querySelectorAll('a, .service-card, .btn');
+        const hoverElements = document.querySelectorAll('a, .service-card, .btn, .btn-musica');
         hoverElements.forEach(el => {
             el.addEventListener('mouseenter', () => cursorRing.classList.add('hover'));
             el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
