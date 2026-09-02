@@ -29,6 +29,7 @@
             color: var(--negro);
             line-height: 1.5;
             text-transform: uppercase;
+            overflow-x: hidden;
         }
 
         .audio-oculto {
@@ -108,7 +109,7 @@
         }
 
         .logo-img {
-            height: 150px; /* ✅ LOGO 3 VECES MÁS GRANDE */
+            height: 150px;
             width: auto;
         }
 
@@ -143,12 +144,18 @@
             padding-top: 14rem;
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .hero-texto {
+            flex: 1;
         }
 
         .hero h1 {
-            font-size: clamp(3.5rem, 12vw, 8rem);
+            font-size: clamp(3rem, 10vw, 7rem);
             line-height: 1;
             font-weight: 800;
             letter-spacing: 3px;
@@ -160,8 +167,8 @@
         }
 
         .hero p {
-            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-            max-width: 700px;
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            max-width: 600px;
             color: #555;
             margin-bottom: 3rem;
         }
@@ -181,6 +188,83 @@
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(45, 12, 226, 0.2);
+        }
+
+        /* ====== GLOBO TERRAQUEO — TAMAÑO GRANDE IGUAL ====== */
+        .globo-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .globo {
+            width: 480px;       /* ✅ TAMAÑO GRANDE IGUAL */
+            height: 480px;      /* ✅ TAMAÑO GRANDE IGUAL */
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2D0CE2 0%, #11E7DB 50%, #2D0CE2 100%);
+            position: relative;
+            animation: girar 25s linear infinite;
+            box-shadow: 
+                inset -60px -30px 60px rgba(0,0,0,0.25),
+                inset 30px 30px 60px rgba(255,255,255,0.2),
+                0 0 80px rgba(45, 12, 226, 0.25);
+            overflow: hidden;
+        }
+
+        .globo::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: 
+                radial-gradient(circle at 25% 25%, rgba(255,255,255,0.15) 0%, transparent 40%),
+                radial-gradient(circle at 75% 75%, rgba(0,0,0,0.1) 0%, transparent 40%);
+        }
+
+        .linea {
+            position: absolute;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+        }
+
+        .linea-ecuador {
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            transform: translateY(-50%);
+        }
+
+        .circulo {
+            position: absolute;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .circulo-1 { width: 110px; height: 110px; }
+        .circulo-2 { width: 220px; height: 220px; }
+        .circulo-3 { width: 330px; height: 330px; }
+
+        .meridiano {
+            position: absolute;
+            border-left: 1px solid rgba(255,255,255,0.15);
+            height: 100%;
+            left: 50%;
+            transform-origin: center;
+        }
+
+        .meridiano-1 { transform: rotateX(30deg); }
+        .meridiano-2 { transform: rotateX(60deg); }
+
+        @keyframes girar {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         h2 {
@@ -243,6 +327,17 @@
             font-size: 0.95rem;
         }
 
+        @media (max-width: 1024px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            .globo {
+                width: 320px;
+                height: 320px;
+            }
+        }
+
         @media (max-width: 768px) {
             header {
                 padding: 1rem 1rem;
@@ -250,7 +345,7 @@
                 gap: 1rem;
             }
             .logo-img {
-                height: 100px; /* En celular se ajusta solo */
+                height: 100px;
             }
             nav a {
                 margin-left: 0.5rem;
@@ -262,6 +357,10 @@
             }
             .hero {
                 padding-top: 12rem;
+            }
+            .globo {
+                width: 240px;
+                height: 240px;
             }
             .reproductor {
                 bottom: 1rem;
@@ -303,9 +402,21 @@
     </header>
 
     <section class="hero visible" id="inicio">
-        <h1>OPERAI<br>COLOMBIA</h1>
-        <p>SOLUCIONES CONFIABLES Y PROFESIONALES PARA TU EMPRESA. CALIDAD, COMPROMISO Y TECNOLOGÍA EN CADA PROYECTO.</p>
-        <a href="#contacto" class="btn">SOLICITAR INFORMACIÓN</a>
+        <div class="hero-texto">
+            <h1>OPERAI<br>COLOMBIA</h1>
+            <p>SOLUCIONES CONFIABLES Y PROFESIONALES PARA TU EMPRESA. CALIDAD, COMPROMISO Y TECNOLOGÍA EN CADA PROYECTO.</p>
+            <a href="#contacto" class="btn">SOLICITAR INFORMACIÓN</a>
+        </div>
+        <div class="globo-container">
+            <div class="globo">
+                <div class="linea linea-ecuador"></div>
+                <div class="circulo circulo-1"></div>
+                <div class="circulo circulo-2"></div>
+                <div class="circulo circulo-3"></div>
+                <div class="meridiano meridiano-1"></div>
+                <div class="meridiano meridiano-2"></div>
+            </div>
+        </div>
     </section>
 
     <section id="nosotros">
@@ -409,6 +520,9 @@
             el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
         });
     </script>
+
+</body>
+</html>
 
 </body>
 </html>
