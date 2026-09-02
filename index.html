@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="OPERAI">
-    <link rel="apple-touch-icon" href="OPERAICOL.svg">
+    <link rel="apple-touch-icon" href="OPERAICOL.jpeg">
     <meta name="description" content="Soluciones confiables y profesionales para su empresa en Colombia">
     <style>
         * {margin: 0; padding: 0; box-sizing: border-box; cursor: none;}
@@ -74,7 +74,6 @@
         }
         .instalar-app.mostrar {display: block;}
         .instalar-app:hover {transform: scale(1.05); box-shadow: 0 0 30px rgba(79,249,243,0.5);}
-
         /* ===== ASISTENTE JARVIS CON VOZ ESTILO IRON MAN ===== */
         .jarvis-boton {
             position: fixed; bottom: 14rem; right: 2rem;
@@ -289,7 +288,6 @@
     </style>
 </head>
 <body>
-
     <!-- 🤖 NUESTRO ASISTENTE JARVIS CON VOZ ESTILO IRON MAN -->
     <button class="jarvis-boton" id="jarvisBoton">J</button>
     <div class="jarvis-ventana" id="jarvisVentana">
@@ -307,14 +305,13 @@
             <!-- Mensajes aparecerán aquí -->
         </div>
     </div>
-
     <button class="instalar-app" id="btnInstalar">📲 INSTALAR APP</button>
     <button class="btn-idioma" id="btnIdioma">🌐 EN</button>
     <a href="https://wa.me/573174235796?text=HOLA!%20ME%20GUSTARÍA%20SOLICITAR%20INFORMACIÓN%20SOBRE%20SUS%20SERVICIOS" target="_blank" class="btn-whatsapp">💬</a>
     <div class="cursor-dot"></div>
     <div class="cursor-ring"></div>
     <div class="audio-oculto">
-        <audio id="musica" src="FortunateSon.mp3" loop>
+        <audio id="musica" src="fortunateSon.mp3" loop>
             Su navegador no soporta audio.
         
     </div>
@@ -322,7 +319,7 @@
         <button class="btn-musica" id="botonMusica">▶</button>
     </div>
     <header>
-        <img src="OPERAICOL.svg" alt="OPERAI COLOMBIA" class="logo-img">
+        <img src="OPERAICOL.jpeg" alt="OPERAI COLOMBIA" class="logo-img">
         <nav>
             <a href="#inicio" class="es">INICIO</a>
             <a href="#inicio" class="en">HOME</a>
@@ -334,7 +331,6 @@
             <a href="#contacto" class="en">CONTACT</a>
         </nav>
     </header>
-
     <section class="hero visible" id="inicio">
         <div class="hero-texto">
             <h1 class="es">OPERAI<br>COLOMBIA</h1>
@@ -348,7 +344,6 @@
             <div class="globo"></div>
         </div>
     </section>
-
     <section id="nosotros">
         <h2 class="es">¿QUIÉNES SOMOS?</h2>
         <h2 class="en">WHO ARE WE?</h2>
@@ -365,7 +360,6 @@
             COMMITMENT, TRANSPARENCY AND EXCELLENCE IN EVERY PROJECT WE UNDERTAKE.
         </p>
     </section>
-
     <section id="servicios">
         <h2 class="es">NUESTROS SERVICIOS</h2>
         <h2 class="en">OUR SERVICES</h2>
@@ -408,7 +402,6 @@
             </div>
         </div>
     </section>
-
     <section class="contact-section" id="contacto">
         <h2 class="es">CONTÁCTENOS</h2>
         <h2 class="en">CONTACT US</h2>
@@ -417,7 +410,6 @@
         <p>📞 +57 317 423 5796</p>
         <p>📧 operaicolombia@gmail.com</p>
     </section>
-
     <footer>
         <p class="es">&copy; 2026 OPERAI COLOMBIA. TODOS LOS DERECHOS RESERVADOS.</p>
         <p class="en">&copy; 2026 OPERAI COLOMBIA. ALL RIGHTS RESERVED.</p>
@@ -465,7 +457,6 @@
             }
             
             if (vozPref) mensaje.voice = vozPref;
-
             window.speechSynthesis.speak(mensaje);
         }
 
@@ -538,6 +529,7 @@
                 navigator.serviceWorker.register('/sw.js');
             });
         }
+
         let eventoInstalar;
         const btnInstalar = document.getElementById('btnInstalar');
         window.addEventListener('beforeinstallprompt', (e) => {
@@ -552,6 +544,7 @@
             if (outcome === 'accepted') btnInstalar.classList.remove('mostrar');
             eventoInstalar = null;
         });
+
         let idiomaActual = 'es';
         const btnIdioma = document.getElementById('btnIdioma');
         function cambiarIdioma() {
@@ -572,6 +565,7 @@
             }
         }
         btnIdioma.addEventListener('click', cambiarIdioma);
+
         const audio = document.getElementById('musica');
         const boton = document.getElementById('botonMusica');
         let reproduciendo = false;
@@ -587,6 +581,7 @@
                 reproduciendo = false;
             }
         });
+
         const secciones = document.querySelectorAll('section');
         const observador = new IntersectionObserver((entradas) => {
             entradas.forEach(entrada => {
@@ -594,6 +589,7 @@
             });
         }, { threshold: 0.1 });
         secciones.forEach(s => observador.observe(s));
+
         const puntero = document.querySelector('.cursor-dot');
         const anillo = document.querySelector('.cursor-ring');
         let ratonX = 0, ratonY = 0;
@@ -605,6 +601,7 @@
             anillo.style.left = ratonX + 'px';
             anillo.style.top = ratonY + 'px';
         });
+
         document.querySelectorAll('a, .service-card, .btn, .btn-musica, .btn-idioma, .btn-whatsapp, .instalar-app, .jarvis-boton').forEach(el => {
             el.addEventListener('mouseenter', () => anillo.classList.add('hover'));
             el.addEventListener('mouseleave', () => anillo.classList.remove('hover'));
