@@ -16,8 +16,9 @@
             --azul-oscuro: #0A0830;
             --azul-medio: #2D0CE2;
             --turquesa: #11E7DB;
-            --blanco: #FFFFFF;
-            --gris-claro: #E0E0FF;
+            --turquesa-brillante: #4FF9F3;
+            --blanco-puro: #FFFFFF;
+            --blanco-suave: #E8FFFD;
         }
 
         html {
@@ -27,7 +28,7 @@
         body {
             font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             background: linear-gradient(135deg, #0A0830 0%, #1A1060 50%, #0A0830 100%);
-            color: var(--blanco);
+            color: var(--blanco-suave);
             line-height: 1.6;
             text-transform: uppercase;
             overflow-x: hidden;
@@ -46,40 +47,40 @@
             width: 65px;
             height: 65px;
             border-radius: 50%;
-            background: linear-gradient(90deg, var(--azul-medio), var(--turquesa));
-            border: 3px solid rgba(255,255,255,0.3);
+            background: linear-gradient(90deg, var(--azul-medio), var(--turquesa-brillante));
+            border: 3px solid rgba(79, 249, 243, 0.4);
             color: white;
             font-size: 1.4rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 25px rgba(17, 231, 219, 0.4);
+            box-shadow: 0 0 25px rgba(17, 231, 219, 0.5);
             transition: all 0.3s ease;
         }
 
         .btn-musica:hover {
             transform: scale(1.15);
-            box-shadow: 0 0 40px rgba(17, 231, 219, 0.6);
+            box-shadow: 0 0 40px rgba(79, 249, 243, 0.7);
         }
 
         .cursor-dot {
             width: 10px;
             height: 10px;
-            background: linear-gradient(90deg, var(--azul-medio), var(--turquesa));
+            background: linear-gradient(90deg, var(--azul-medio), var(--turquesa-brillante));
             border-radius: 50%;
             position: fixed;
             z-index: 9999;
             pointer-events: none;
             transform: translate(-50%, -50%);
-            box-shadow: 0 0 15px rgba(17, 231, 219, 0.8);
+            box-shadow: 0 0 15px rgba(79, 249, 243, 0.8);
         }
 
         .cursor-ring {
             width: 45px;
             height: 45px;
             border: 2px solid transparent;
-            border-image: linear-gradient(90deg, var(--azul-medio), var(--turquesa)) 1;
+            border-image: linear-gradient(90deg, var(--azul-medio), var(--turquesa-brillante)) 1;
             border-radius: 50%;
             position: fixed;
             z-index: 9998;
@@ -105,19 +106,19 @@
             align-items: center;
             background: rgba(10, 8, 48, 0.85);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(17, 231, 219, 0.15);
+            border-bottom: 1px solid rgba(17, 231, 219, 0.2);
             z-index: 100;
         }
 
         .logo-img {
             height: 140px;
             width: auto;
-            filter: drop-shadow(0 0 10px rgba(17, 231, 219, 0.3));
+            filter: drop-shadow(0 0 15px rgba(17, 231, 219, 0.4));
         }
 
         nav a {
             margin-left: 2.2rem;
-            color: var(--gris-claro);
+            color: var(--blanco-suave);
             text-decoration: none;
             font-size: 1rem;
             font-weight: 600;
@@ -126,8 +127,8 @@
         }
 
         nav a:hover {
-            color: var(--turquesa);
-            text-shadow: 0 0 10px rgba(17, 231, 219, 0.5);
+            color: var(--turquesa-brillante);
+            text-shadow: 0 0 12px rgba(79, 249, 243, 0.6);
         }
 
         section {
@@ -162,17 +163,17 @@
             font-weight: 800;
             letter-spacing: 4px;
             margin-bottom: 2.5rem;
-            background: linear-gradient(90deg, #FFFFFF 0%, #11E7DB 50%, #FFFFFF 100%);
+            background: linear-gradient(90deg, #4FF9F3 0%, #11E7DB 50%, #4FF9F3 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 40px rgba(17, 231, 219, 0.2);
+            filter: drop-shadow(0 0 30px rgba(79, 249, 243, 0.5));
         }
 
         .hero p {
             font-size: clamp(1.15rem, 2.5vw, 1.6rem);
             max-width: 650px;
-            color: var(--gris-claro);
+            color: var(--blanco-suave);
             line-height: 1.8;
             margin-bottom: 3rem;
             font-weight: 500;
@@ -181,24 +182,24 @@
         .btn {
             display: inline-block;
             padding: 1.2rem 3.2rem;
-            background: linear-gradient(90deg, var(--azul-medio), var(--turquesa));
+            background: linear-gradient(90deg, var(--azul-medio), var(--turquesa-brillante));
             color: white;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 700;
             font-size: 1.05rem;
             letter-spacing: 1px;
-            box-shadow: 0 0 25px rgba(45, 12, 226, 0.35);
+            box-shadow: 0 0 30px rgba(17, 231, 219, 0.4);
             transition: all 0.4s ease;
-            border: 2px solid rgba(255,255,255,0.1);
+            border: 2px solid rgba(79, 249, 243, 0.3);
         }
 
         .btn:hover {
             transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 0 40px rgba(17, 231, 219, 0.5);
+            box-shadow: 0 0 50px rgba(79, 249, 243, 0.6);
         }
 
-        /* ====== CÍRCULO GIRATORIO BRILLANTE ====== */
+        /* ====== CÍRCULO GIRATORIO ====== */
         .globo-container {
             flex: 1;
             display: flex;
@@ -210,13 +211,13 @@
             width: 480px;
             height: 480px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #2D0CE2 0%, #11E7DB 50%, #2D0CE2 100%);
+            background: linear-gradient(135deg, #2D0CE2 0%, #11E7DB 50%, #4FF9F3 70%, #2D0CE2 100%);
             animation: girar 25s linear infinite;
             box-shadow:
                 inset -70px -40px 80px rgba(10, 8, 48, 0.5),
-                inset 40px 40px 80px rgba(255,255,255,0.2),
-                0 0 60px rgba(45, 12, 226, 0.4),
-                0 0 100px rgba(17, 231, 219, 0.25);
+                inset 40px 40px 80px rgba(255,255,255,0.15),
+                0 0 60px rgba(17, 231, 219, 0.4),
+                0 0 100px rgba(79, 249, 243, 0.3);
             position: relative;
         }
 
@@ -230,14 +231,17 @@
             font-weight: 800;
             margin-bottom: 3rem;
             letter-spacing: 3px;
-            color: var(--turquesa);
-            text-shadow: 0 0 20px rgba(17, 231, 219, 0.3);
+            color: var(--blanco-puro);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            border-bottom: 3px solid var(--turquesa-brillante);
+            padding-bottom: 1rem;
+            display: inline-block;
         }
 
         .about-text {
             font-size: 1.2rem;
             max-width: 850px;
-            color: var(--gris-claro);
+            color: var(--blanco-suave);
             line-height: 1.9;
             font-weight: 500;
         }
@@ -250,30 +254,31 @@
         }
 
         .service-card {
-            border: 2px solid rgba(17, 231, 219, 0.2);
+            border: 2px solid rgba(79, 249, 243, 0.25);
             border-radius: 20px;
             padding: 2.5rem;
-            background: rgba(255,255,255,0.03);
+            background: rgba(17, 231, 219, 0.03);
             backdrop-filter: blur(8px);
             transition: all 0.4s ease;
         }
 
         .service-card:hover {
-            border-color: var(--turquesa);
+            border-color: var(--turquesa-brillante);
             transform: translateY(-10px);
-            box-shadow: 0 0 30px rgba(17, 231, 219, 0.2);
-            background: rgba(17, 231, 219, 0.05);
+            box-shadow: 0 0 35px rgba(79, 249, 243, 0.25);
+            background: rgba(79, 249, 243, 0.05);
         }
 
         .service-card h3 {
             font-size: 1.3rem;
             margin-bottom: 1.2rem;
-            color: var(--turquesa);
+            color: var(--turquesa-brillante);
             font-weight: 700;
+            text-shadow: 0 0 10px rgba(79, 249, 243, 0.4);
         }
 
         .service-card p {
-            color: var(--gris-claro);
+            color: var(--blanco-suave);
             line-height: 1.8;
             font-weight: 500;
         }
@@ -281,15 +286,15 @@
         .contact-section p {
             font-size: 1.3rem;
             margin: 0.8rem 0;
-            color: var(--gris-claro);
+            color: var(--blanco-suave);
             font-weight: 500;
         }
 
         footer {
             padding: 3.5rem;
-            border-top: 1px solid rgba(17, 231, 219, 0.15);
+            border-top: 1px solid rgba(79, 249, 243, 0.2);
             text-align: center;
-            color: rgba(224, 224, 255, 0.6);
+            color: rgba(232, 255, 253, 0.6);
             font-size: 0.95rem;
             margin-top: 3rem;
         }
