@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OPERAI COLOMBIA</title>
-    <!-- ✅ CÓDIGO PARA LA APLICACIÓN MÓVIL -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#11E7DB">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -13,12 +12,7 @@
     <link rel="apple-touch-icon" href="OPERAICOL.jpeg">
     <meta name="description" content="Soluciones confiables y profesionales para tu empresa en Colombia">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            cursor: none;
-        }
+        * {margin: 0; padding: 0; box-sizing: border-box; cursor: none;}
         :root {
             --azul-oscuro: #0A0830;
             --azul-medio: #2D0CE2;
@@ -28,9 +22,7 @@
             --blanco-suave: #E8FFFD;
             --whatsapp: #25D366;
         }
-        html {
-            scroll-behavior: smooth;
-        }
+        html {scroll-behavior: smooth;}
         body {
             font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             background: linear-gradient(135deg, #0A0830 0%, #1A1060 50%, #0A0830 100%);
@@ -39,399 +31,187 @@
             text-transform: uppercase;
             overflow-x: hidden;
         }
-        .audio-oculto { display: none; }
-        .reproductor {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 100;
-        }
+        .audio-oculto {display: none;}
+        .reproductor {position: fixed; bottom: 2rem; right: 2rem; z-index: 100;}
         .btn-musica {
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
+            width: 65px; height: 65px; border-radius: 50%;
             background: linear-gradient(90deg, var(--azul-medio), var(--turquesa-brillante));
-            border: 3px solid rgba(79, 249, 243, 0.4);
-            color: white;
-            font-size: 1.4rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 25px rgba(17, 231, 219, 0.5);
-            transition: all 0.3s ease;
+            border: 3px solid rgba(79,249,243,0.4); color: white; font-size: 1.4rem;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 25px rgba(17,231,219,0.5); transition: all 0.3s ease;
         }
-        .btn-musica:hover {
-            transform: scale(1.15);
-            box-shadow: 0 0 40px rgba(79, 249, 243, 0.7);
-        }
-        /* ===== BOTÓN DE WHATSAPP ===== */
+        .btn-musica:hover {transform: scale(1.15); box-shadow: 0 0 40px rgba(79,249,243,0.7);}
         .btn-whatsapp {
-            position: fixed;
-            bottom: 7.5rem;
-            right: 2rem;
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            background: var(--whatsapp);
-            color: white;
-            font-size: 1.8rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 25px rgba(37, 211, 102, 0.4);
-            z-index: 100;
-            transition: all 0.3s ease;
-            text-decoration: none;
+            position: fixed; bottom: 7.5rem; right: 2rem;
+            width: 65px; height: 65px; border-radius: 50%;
+            background: var(--whatsapp); color: white; font-size: 1.8rem;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 25px rgba(37,211,102,0.4); z-index: 100;
+            transition: all 0.3s ease; text-decoration: none;
         }
-        .btn-whatsapp:hover {
-            transform: scale(1.15);
-            box-shadow: 0 0 40px rgba(37, 211, 102, 0.6);
-        }
-        /* ===== BOTÓN DE TRADUCCIÓN ===== */
+        .btn-whatsapp:hover {transform: scale(1.15); box-shadow: 0 0 40px rgba(37,211,102,0.6);}
         .btn-idioma {
-            position: fixed;
-            top: 1.2rem;
-            right: 2rem;
+            position: fixed; top: 1.2rem; right: 2rem;
             padding: 0.6rem 1.4rem;
             background: linear-gradient(90deg, var(--azul-medio), var(--turquesa-brillante));
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            cursor: pointer;
-            z-index: 101;
-            box-shadow: 0 0 20px rgba(17, 231, 219, 0.3);
+            color: white; border: none; border-radius: 50px;
+            font-weight: 700; font-size: 0.9rem; cursor: pointer;
+            z-index: 101; box-shadow: 0 0 20px rgba(17,231,219,0.3);
             transition: all 0.3s ease;
         }
-        .btn-idioma:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 35px rgba(79, 249, 243, 0.5);
-        }
-        .cursor-dot {
-            width: 10px;
-            height: 10px;
+        .btn-idioma:hover {transform: scale(1.05); box-shadow: 0 0 35px rgba(79,249,243,0.5);}
+        .instalar-app {
+            position: fixed; bottom: 2rem; left: 2rem;
+            padding: 0.7rem 1.2rem;
             background: linear-gradient(90deg, var(--azul-medio), var(--turquesa-brillante));
-            border-radius: 50%;
-            position: fixed;
-            z-index: 9999;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 15px rgba(79, 249, 243, 0.8);
+            color: white; border: none; border-radius: 50px;
+            font-weight: 700; font-size: 0.85rem; cursor: pointer;
+            z-index: 101; box-shadow: 0 0 20px rgba(17,231,219,0.3);
+            transition: all 0.3s ease; display: none;
+        }
+        .instalar-app.mostrar {display: block;}
+        .instalar-app:hover {transform: scale(1.05); box-shadow: 0 0 30px rgba(79,249,243,0.5);}
+        .cursor-dot {
+            width: 10px; height: 10px;
+            background: linear-gradient(90deg, var(--azul-medio), var(--turquesa-brillante));
+            border-radius: 50%; position: fixed; z-index: 9999;
+            pointer-events: none; transform: translate(-50%,-50%);
+            box-shadow: 0 0 15px rgba(79,249,243,0.8);
         }
         .cursor-ring {
-            width: 45px;
-            height: 45px;
-            border: 2px solid transparent;
+            width: 45px; height: 45px; border: 2px solid transparent;
             border-image: linear-gradient(90deg, var(--azul-medio), var(--turquesa-brillante)) 1;
-            border-radius: 50%;
-            position: fixed;
-            z-index: 9998;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
+            border-radius: 50%; position: fixed; z-index: 9998;
+            pointer-events: none; transform: translate(-50%,-50%);
             transition: all 0.2s ease;
         }
-        .cursor-ring.hover {
-            width: 80px;
-            height: 80px;
-            opacity: 0.8;
-        }
+        .cursor-ring.hover {width: 80px; height: 80px; opacity: 0.8;}
         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 1.2rem 3rem;
-            padding-right: 11rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(10, 8, 48, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(17, 231, 219, 0.2);
-            z-index: 100;
+            position: fixed; top: 0; left: 0; width: 100%;
+            padding: 1.2rem 3rem; padding-right: 11rem;
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(10,8,48,0.85); backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(17,231,219,0.2); z-index: 100;
         }
-        .logo-img {
-            height: 140px;
-            width: auto;
-            filter: drop-shadow(0 0 15px rgba(17, 231, 219, 0.4));
-        }
+        .logo-img {height: 140px; width: auto; filter: drop-shadow(0 0 15px rgba(17,231,219,0.4));}
         nav a {
-            margin-left: 2.2rem;
-            color: var(--blanco-suave);
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
+            margin-left: 2.2rem; color: var(--blanco-suave);
+            text-decoration: none; font-size: 1rem; font-weight: 600;
+            letter-spacing: 1px; transition: all 0.3s ease;
         }
-        nav a:hover {
-            color: var(--turquesa-brillante);
-            text-shadow: 0 0 12px rgba(79, 249, 243, 0.6);
-        }
+        nav a:hover {color: var(--turquesa-brillante); text-shadow: 0 0 12px rgba(79,249,243,0.6);}
         section {
-            padding: 12rem 3rem 8rem;
-            max-width: 1400px;
-            margin: 0 auto;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s ease-out;
+            padding: 12rem 3rem 8rem; max-width: 1400px; margin: 0 auto;
+            opacity: 0; transform: translateY(50px); transition: all 1s ease-out;
         }
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        section.visible {opacity: 1; transform: translateY(0);}
         .hero {
-            padding-top: 15rem;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            gap: 4rem;
+            padding-top: 15rem; min-height: 100vh;
+            display: flex; flex-direction: row; align-items: center;
+            justify-content: space-between; gap: 4rem;
         }
-        .hero-texto { flex: 1; }
+        .hero-texto {flex: 1;}
         .hero h1 {
-            font-size: clamp(3.2rem, 10vw, 7.5rem);
-            line-height: 1.1;
-            font-weight: 800;
-            letter-spacing: 4px;
-            margin-bottom: 2.5rem;
-            background: linear-gradient(90deg, #4FF9F3 0%, #11E7DB 50%, #4FF9F3 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            filter: drop-shadow(0 0 30px rgba(79, 249, 243, 0.5));
+            font-size: clamp(3.2rem,10vw,7.5rem); line-height: 1.1;
+            font-weight: 800; letter-spacing: 4px; margin-bottom: 2.5rem;
+            background: linear-gradient(90deg,#4FF9F3 0%,#11E7DB 50%,#4FF9F3 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; filter: drop-shadow(0 0 30px rgba(79,249,243,0.5));
         }
         .hero p {
-            font-size: clamp(1.15rem, 2.5vw, 1.6rem);
-            max-width: 650px;
-            color: var(--blanco-suave);
-            line-height: 1.8;
-            margin-bottom: 3rem;
+            font-size: clamp(1.15rem,2.5vw,1.6rem); max-width: 650px;
+            color: var(--blanco-suave); line-height: 1.8; margin-bottom: 3rem;
             font-weight: 500;
         }
         .btn {
-            display: inline-block;
-            padding: 1.2rem 3.2rem;
+            display: inline-block; padding: 1.2rem 3.2rem;
             background: linear-gradient(90deg, var(--azul-medio), var(--turquesa-brillante));
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.05rem;
-            letter-spacing: 1px;
-            box-shadow: 0 0 30px rgba(17, 231, 219, 0.4);
-            transition: all 0.4s ease;
-            border: 2px solid rgba(79, 249, 243, 0.3);
+            color: white; text-decoration: none; border-radius: 50px;
+            font-weight: 700; font-size: 1.05rem; letter-spacing: 1px;
+            box-shadow: 0 0 30px rgba(17,231,219,0.4); transition: all 0.4s ease;
+            border: 2px solid rgba(79,249,243,0.3);
         }
-        .btn:hover {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 0 50px rgba(79, 249, 243, 0.6);
-        }
-        .globo-container {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+        .btn:hover {transform: translateY(-5px) scale(1.03); box-shadow: 0 0 50px rgba(79,249,243,0.6);}
+        .globo-container {flex: 1; display: flex; justify-content: center; align-items: center;}
         .globo {
-            width: 480px;
-            height: 480px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #2D0CE2 0%, #11E7DB 50%, #4FF9F3 70%, #2D0CE2 100%);
+            width: 480px; height: 480px; border-radius: 50%;
+            background: linear-gradient(135deg,#2D0CE2 0%,#11E7DB 50%,#4FF9F3 70%,#2D0CE2 100%);
             animation: girar 25s linear infinite;
-            box-shadow:
-                inset -70px -40px 80px rgba(10, 8, 48, 0.5),
-                inset 40px 40px 80px rgba(255,255,255,0.15),
-                0 0 60px rgba(17, 231, 219, 0.4),
-                0 0 100px rgba(79, 249, 243, 0.3);
+            box-shadow: inset -70px -40px 80px rgba(10,8,48,0.5),
+                        inset 40px 40px 80px rgba(255,255,255,0.15),
+                        0 0 60px rgba(17,231,219,0.4),
+                        0 0 100px rgba(79,249,243,0.3);
             position: relative;
         }
-        @keyframes girar {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+        @keyframes girar {from {transform: rotate(0deg);} to {transform: rotate(360deg);}}
         h2 {
-            font-size: clamp(2.2rem, 5vw, 3.8rem);
-            font-weight: 800;
-            margin-bottom: 3rem;
-            letter-spacing: 3px;
-            color: var(--blanco-puro);
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-            border-bottom: 3px solid var(--turquesa-brillante);
-            padding-bottom: 1rem;
+            font-size: clamp(2.2rem,5vw,3.8rem); font-weight: 800; margin-bottom: 3rem;
+            letter-spacing: 3px; color: var(--blanco-puro);
+            text-shadow: 0 0 20px rgba(255,255,255,0.3);
+            border-bottom: 3px solid var(--turquesa-brillante); padding-bottom: 1rem;
             display: inline-block;
         }
-        .about-text {
-            font-size: 1.2rem;
-            max-width: 850px;
-            color: var(--blanco-suave);
-            line-height: 1.9;
-            font-weight: 500;
-        }
+        .about-text {font-size: 1.2rem; max-width: 850px; color: var(--blanco-suave); line-height: 1.9; font-weight: 500;}
         .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-top: 2rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem; margin-top: 2rem;
         }
         .service-card {
-            border: 2px solid rgba(79, 249, 243, 0.25);
-            border-radius: 20px;
-            padding: 2.5rem;
-            background: rgba(17, 231, 219, 0.03);
-            backdrop-filter: blur(8px);
+            border: 2px solid rgba(79,249,243,0.25); border-radius: 20px; padding: 2.5rem;
+            background: rgba(17,231,219,0.03); backdrop-filter: blur(8px);
             transition: all 0.4s ease;
         }
         .service-card:hover {
-            border-color: var(--turquesa-brillante);
-            transform: translateY(-10px);
-            box-shadow: 0 0 35px rgba(79, 249, 243, 0.25);
-            background: rgba(79, 249, 243, 0.05);
+            border-color: var(--turquesa-brillante); transform: translateY(-10px);
+            box-shadow: 0 0 35px rgba(79,249,243,0.25); background: rgba(79,249,243,0.05);
         }
         .service-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.2rem;
-            color: var(--turquesa-brillante);
-            font-weight: 700;
-            text-shadow: 0 0 10px rgba(79, 249, 243, 0.4);
+            font-size: 1.3rem; margin-bottom: 1.2rem; color: var(--turquesa-brillante);
+            font-weight: 700; text-shadow: 0 0 10px rgba(79,249,243,0.4);
         }
-        .service-card p {
-            color: var(--blanco-suave);
-            line-height: 1.8;
-            font-weight: 500;
-        }
-        .contact-section p {
-            font-size: 1.3rem;
-            margin: 0.8rem 0;
-            color: var(--blanco-suave);
-            font-weight: 500;
-        }
+        .service-card p {color: var(--blanco-suave); line-height: 1.8; font-weight: 500;}
+        .contact-section p {font-size: 1.3rem; margin: 0.8rem 0; color: var(--blanco-suave); font-weight: 500;}
         footer {
-            padding: 3.5rem;
-            border-top: 1px solid rgba(79, 249, 243, 0.2);
-            text-align: center;
-            color: rgba(232, 255, 253, 0.6);
-            font-size: 0.95rem;
-            margin-top: 3rem;
+            padding: 3.5rem; border-top: 1px solid rgba(79,249,243,0.2);
+            text-align: center; color: rgba(232,255,253,0.6);
+            font-size: 0.95rem; margin-top: 3rem;
         }
-        .en { display: none; }
-        /* ===== BOTÓN DE INSTALAR APP ===== */
-        .instalar-app {
-            position: fixed;
-            bottom: 2rem;
-            left: 2rem;
-            padding: 0.7rem 1.2rem;
-            background: linear-gradient(90deg, var(--azul-medio), var(--turquesa-brillante));
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            cursor: pointer;
-            z-index: 101;
-            box-shadow: 0 0 20px rgba(17, 231, 219, 0.3);
-            transition: all 0.3s ease;
-            display: none;
-        }
-        .instalar-app.mostrar { display: block; }
-        .instalar-app:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(79, 249, 243, 0.5);
-        }
+        .en {display: none;}
         @media (max-width: 1024px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-            }
-            .globo {
-                width: 320px;
-                height: 320px;
-            }
+            .hero {flex-direction: column; text-align: center;}
+            .globo {width: 320px; height: 320px;}
         }
         @media (max-width: 768px) {
-            header {
-                padding: 1rem 1.2rem;
-                padding-right: 1.2rem;
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .logo-img {
-                height: 100px;
-            }
-            nav a {
-                margin: 0 0.4rem;
-                font-size: 0.8rem;
-            }
-            section {
-                padding: 6rem 1.2rem;
-            }
-            .hero {
-                padding-top: 13rem;
-            }
-            .globo {
-                width: 240px;
-                height: 240px;
-            }
-            .reproductor {
-                bottom: 1.2rem;
-                right: 1.2rem;
-            }
-            .btn-musica {
-                width: 55px;
-                height: 55px;
-            }
-            .btn-whatsapp {
-                bottom: 7rem;
-                right: 1.2rem;
-                width: 55px;
-                height: 55px;
-                font-size: 1.5rem;
-            }
-            .btn-idioma {
-                top: auto;
-                bottom: 1.2rem;
-                right: 7rem;
-                font-size: 0.8rem;
-                padding: 0.5rem 1rem;
-            }
-            .instalar-app {
-                left: 1.2rem;
-                bottom: 1.2rem;
-                font-size: 0.75rem;
-                padding: 0.5rem 0.8rem;
-            }
-            .cursor-dot, .cursor-ring { display: none; }
-            * { cursor: auto; }
+            header {padding: 1rem 1.2rem; padding-right: 1.2rem; flex-direction: column; gap: 1rem;}
+            .logo-img {height: 100px;}
+            nav a {margin: 0 0.4rem; font-size: 0.8rem;}
+            section {padding: 6rem 1.2rem;}
+            .hero {padding-top: 13rem;}
+            .globo {width: 240px; height: 240px;}
+            .reproductor {bottom: 1.2rem; right: 1.2rem;}
+            .btn-musica {width: 55px; height: 55px;}
+            .btn-whatsapp {bottom: 7rem; right: 1.2rem; width: 55px; height: 55px; font-size: 1.5rem;}
+            .btn-idioma {top: auto; bottom: 1.2rem; right: 7rem; font-size: 0.8rem; padding: 0.5rem 1rem;}
+            .instalar-app {left: 1.2rem; bottom: 1.2rem; font-size: 0.75rem; padding: 0.5rem 0.8rem;}
+            .cursor-dot, .cursor-ring {display: none;}
+            * {cursor: auto;}
         }
     </style>
 </head>
 <body>
-
-    <!-- BOTÓN DE INSTALAR APLICACIÓN -->
     <button class="instalar-app" id="btnInstalar">📲 INSTALAR APP</button>
-
-    <!-- BOTÓN DE TRADUCCIÓN -->
     <button class="btn-idioma" id="btnIdioma">🌐 EN</button>
-
-    <!-- BOTÓN DE WHATSAPP -->
     <a href="https://wa.me/573174235796?text=HOLA!%20ME%20GUSTARÍA%20SOLICITAR%20INFORMACIÓN%20SOBRE%20SUS%20SERVICIOS" target="_blank" class="btn-whatsapp">💬</a>
-
     <div class="cursor-dot"></div>
     <div class="cursor-ring"></div>
-
     <div class="audio-oculto">
         <audio id="musica" src="fortunateSon.mp3" loop>
             Tu navegador no soporta audio.
         
     </div>
-
     <div class="reproductor">
         <button class="btn-musica" id="botonMusica">▶</button>
     </div>
-
     <header>
         <img src="OPERAICOL.jpeg" alt="OPERAI COLOMBIA" class="logo-img">
         <nav>
@@ -505,6 +285,18 @@
                 <p class="es">REALIZAMOS ACOMPAÑAMIENTO A TU OPERACIÓN Y REALIZAMOS AUDITORÍAS DE CONTROL DE ACUERDO A LAS NECESIDADES DE TU OPERACIÓN.</p>
                 <p class="en">WE PROVIDE MONITORING FOR YOUR OPERATION AND PERFORM CONTROL AUDITS ACCORDING TO YOUR OPERATION'S NEEDS.</p>
             </div>
+            <div class="service-card">
+                <h3 class="es">📊 ANÁLISIS DE DATOS Y BUSINESS INTELLIGENCE</h3>
+                <h3 class="en">📊 DATA ANALYSIS AND BUSINESS INTELLIGENCE</h3>
+                <p class="es">ANÁLISIS DE DATOS MEDIANTE BUSINESS INTELLIGENCE, CREACIÓN Y SEGUIMIENTO DE DASHBOARDS PARA TOMAR MEJORES DECISIONES.</p>
+                <p class="en">DATA ANALYSIS THROUGH BUSINESS INTELLIGENCE, CREATION AND MONITORING OF DASHBOARDS FOR BETTER DECISION-MAKING.</p>
+            </div>
+            <div class="service-card">
+                <h3 class="es">🎓 CAPACITACIÓN Y FORMACIÓN</h3>
+                <h3 class="en">🎓 TRAINING AND EDUCATION</h3>
+                <p class="es">BRINDAMOS CAPACITACIÓN PERSONALIZADA PARA TU EQUIPO, FORTALECIENDO SUS HABILIDADES Y CONOCIMIENTOS EN LAS HERRAMIENTAS Y PROCESOS DE TU EMPRESA.</p>
+                <p class="en">WE PROVIDE PERSONALIZED TRAINING FOR YOUR TEAM, STRENGTHENING THEIR SKILLS AND KNOWLEDGE IN YOUR COMPANY'S TOOLS AND PROCESSES.</p>
+            </div>
         </div>
     </section>
 
@@ -523,7 +315,6 @@
     </footer>
 
     <script>
-        // === REGISTRAR SERVICE WORKER PARA LA APP ===
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js')
@@ -531,8 +322,6 @@
                     .catch((error) => console.log('⚠️ Error:', error));
             });
         }
-
-        // === BOTÓN DE INSTALAR APP ===
         let eventoInstalar;
         const btnInstalar = document.getElementById('btnInstalar');
         window.addEventListener('beforeinstallprompt', (e) => {
@@ -549,11 +338,8 @@
             }
             eventoInstalar = null;
         });
-
-        // === TRADUCCIÓN ESPAÑOL ↔ INGLÉS ===
         let idiomaActual = 'es';
         const btnIdioma = document.getElementById('btnIdioma');
-
         function cambiarIdioma() {
             const textosEs = document.querySelectorAll('.es');
             const textosEn = document.querySelectorAll('.en');
@@ -572,8 +358,6 @@
             }
         }
         btnIdioma.addEventListener('click', cambiarIdioma);
-
-        // === REPRODUCTOR DE MÚSICA ===
         const audio = document.getElementById('musica');
         const boton = document.getElementById('botonMusica');
         let reproduciendo = false;
@@ -589,8 +373,6 @@
                 reproduciendo = false;
             }
         });
-
-        // === ANIMACIONES AL DESPLAZAR ===
         const sections = document.querySelectorAll('section');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -598,33 +380,23 @@
             });
         }, { threshold: 0.1 });
         sections.forEach(section => observer.observe(section));
-
-        // === EFECTO DEL CURSOR ===
         const cursorDot = document.querySelector('.cursor-dot');
         const cursorRing = document.querySelector('.cursor-ring');
         let mouseX = 0, mouseY = 0;
-        let dotX = 0, dotY = 0, ringX = 0, ringY = 0;
         document.addEventListener('mousemove', e => {
             mouseX = e.clientX;
             mouseY = e.clientY;
         });
         function animateCursor() {
-            dotX = mouseX; dotY = mouseY;
-            cursorDot.style.left = `${dotX}px`;
-            cursorDot.style.top = `${dotY}px`;
-            ringX += (mouseX - ringX) * 0.1;
-            ringY += (mouseY - ringY) * 0.1;
-            cursorRing.style.left = `${ringX}px`;
-            cursorRing.style.top = `${ringY}px`;
+            cursorDot.style.left = `${mouseX}px`;
+            cursorDot.style.top = `${mouseY}px`;
             requestAnimationFrame(animateCursor);
         }
         animateCursor();
-
         document.querySelectorAll('a, .service-card, .btn, .btn-musica, .btn-idioma, .btn-whatsapp, .instalar-app').forEach(el => {
             el.addEventListener('mouseenter', () => cursorRing.classList.add('hover'));
             el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
         });
     </script>
-
 </body>
 </html>
