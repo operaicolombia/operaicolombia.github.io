@@ -425,9 +425,14 @@
         let vozActiva = true;
 
         // 🎙️ VOZ ESTILO JARVIS — Elegante, pausada, grave y distinguida
+        // ✅ CORREGIDO: Para que diga OPERAI como palabra y NO la deletree
         function hablar(texto) {
             if (!vozActiva) return;
-            const limpio = texto.replace(/[#📊🚀💡🔧✅🎓📍📞📧]/g, ' ').replace(/\n/g, '. ');
+            // El truco: cambiamos la escritura para que la voz lo pronuncie fluido
+            const corregido = texto
+                .replace(/OPERAI/g, 'Ó-pera-i')
+                .replace(/OPERAI COLOMBIA/g, 'Ó-pera-i Colombia');
+            const limpio = corregido.replace(/[#📊🚀💡🔧✅🎓📍📞📧]/g, ' ').replace(/\n/g, '. ');
             const mensaje = new SpeechSynthesisUtterance(limpio);
             
             // 🎙️ PARÁMETROS ESTILO JARVIS ORIGINAL
@@ -494,7 +499,7 @@
         function responder(opcion) {
             const respuestas = {
                 servicios: 'Ofrecemos seis servicios principales: Soluciones Empresariales, Consultoría y Estrategia, Soporte y Mantenimiento, Auditorías Operativas, Análisis de Datos e Inteligencia Comercial, y Capacitación. ¿Desea más información sobre alguno?',
-                ubicacion: 'Operamos desde COLOMBIA. Atendemos a toda la región con soluciones remotas y presenciales.',
+                ubicacion: 'Operamos desde Colombia. Atendemos a toda la región con soluciones remotas y presenciales.',
                 contacto: 'Puede comunicarse con nosotros al teléfono: +57 317 423 5796, al correo: operaicolombia@gmail.com, o pulsando el botón de WhatsApp.',
                 whatsapp: 'Comunicándole con un asesor humano en línea... Abriendo WhatsApp...'
             };
