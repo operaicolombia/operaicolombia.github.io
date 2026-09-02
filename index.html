@@ -9,8 +9,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="OPERAI">
-    <link rel="apple-touch-icon" href="OPERAICOL.jpeg">
-    <meta name="description" content="Soluciones confiables y profesionales para tu empresa en Colombia">
+    <link rel="apple-touch-icon" href="OPERAICOL.svg">
+    <meta name="description" content="Soluciones confiables y profesionales para su empresa en Colombia">
     <style>
         * {margin: 0; padding: 0; box-sizing: border-box; cursor: none;}
         :root {
@@ -75,7 +75,7 @@
         .instalar-app.mostrar {display: block;}
         .instalar-app:hover {transform: scale(1.05); box-shadow: 0 0 30px rgba(79,249,243,0.5);}
 
-        /* ===== ASISTENTE JARVIS ===== */
+        /* ===== ASISTENTE JARVIS CON VOZ ===== */
         .jarvis-boton {
             position: fixed; bottom: 14rem; right: 2rem;
             width: 65px; height: 65px; border-radius: 50%;
@@ -175,6 +175,16 @@
             transition: all 0.25s ease;
         }
         .jarvis-enviar:hover {background: linear-gradient(90deg, #0077CC, #00AAEE);}
+        .jarvis-control-voz {
+            display: flex; align-items: center; gap: 0.4rem; margin-top: 0.6rem;
+            padding: 0.4rem 0.8rem; background: rgba(0,204,255,0.08);
+            border-radius: 6px; font-size: 0.78rem; color: #88CCFF;
+        }
+        .jarvis-btn-voz {
+            background: none; border: none; color: var(--azul-jarvis); cursor: pointer;
+            font-size: 1rem; padding: 0.2rem; transition: transform 0.2s;
+        }
+        .jarvis-btn-voz:hover {transform: scale(1.2);}
 
         .cursor-dot {
             width: 10px; height: 10px;
@@ -307,7 +317,7 @@
 </head>
 <body>
 
-    <!-- 🤖 NUESTRO ASISTENTE JARVIS -->
+    <!-- 🤖 NUESTRO ASISTENTE JARVIS CON VOZ -->
     <button class="jarvis-boton" id="jarvisBoton">J</button>
     <div class="jarvis-ventana" id="jarvisVentana">
         <div class="jarvis-cabecera">
@@ -331,15 +341,15 @@
     <div class="cursor-dot"></div>
     <div class="cursor-ring"></div>
     <div class="audio-oculto">
-        <audio id="musica" src="fortunateSon.mp3" loop>
-            Tu navegador no soporta audio.
+        <audio id="musica" src="FortunateSon.mp3" loop>
+            Su navegador no soporta audio.
         
     </div>
     <div class="reproductor">
         <button class="btn-musica" id="botonMusica">▶</button>
     </div>
     <header>
-        <img src="OPERAICOL.jpeg" alt="OPERAI COLOMBIA" class="logo-img">
+        <img src="OPERAICOL.svg" alt="OPERAI COLOMBIA" class="logo-img">
         <nav>
             <a href="#inicio" class="es">INICIO</a>
             <a href="#inicio" class="en">HOME</a>
@@ -356,8 +366,8 @@
         <div class="hero-texto">
             <h1 class="es">OPERAI<br>COLOMBIA</h1>
             <h1 class="en">OPERAI<br>COLOMBIA</h1>
-            <p class="es">SOLUCIONES CONFIABLES Y PROFESIONALES PARA TU EMPRESA. CALIDAD, CONTROL, COMPROMISO Y TECNOLOGÍA EN CADA PROYECTO.</p>
-            <p class="en">RELIABLE AND PROFESSIONAL SOLUTIONS FOR YOUR COMPANY. QUALITY, CONTROL, COMMITMENT AND TECHNOLOGY IN EVERY PROJECT.</p>
+            <p class="es">SOLUCIONES CONFIABLES Y PROFESIONALES PARA SU EMPRESA. CALIDAD, COMPROMISO Y TECNOLOGÍA EN CADA PROYECTO.</p>
+            <p class="en">RELIABLE AND PROFESSIONAL SOLUTIONS FOR YOUR COMPANY. QUALITY, COMMITMENT AND TECHNOLOGY IN EVERY PROJECT.</p>
             <a href="#contacto" class="btn es">SOLICITAR INFORMACIÓN</a>
             <a href="#contacto" class="btn en">REQUEST INFORMATION</a>
         </div>
@@ -377,7 +387,7 @@
         </p>
         <p class="about-text en">
             WE ARE A COMPANY COMMITTED TO OFFERING COMPREHENSIVE SOLUTIONS IN COLOMBIA.
-            OUR EXPERIENCE OF MORE THAN 22 YEARS IN THE SECTOR AND DEDICATION ALLOW US TO DELIVER QUALITY SERVICES,
+            OUR EXPERIENCE OF MORE THAN 22 YEARS IN THE SECTOR AND DEDICATION ALLOW US TO PROVIDE QUALITY SERVICES,
             ADAPTED TO THE REAL NEEDS OF OUR CLIENTS. WE WORK WITH
             COMMITMENT, TRANSPARENCY AND EXCELLENCE IN EVERY PROJECT WE UNDERTAKE.
         </p>
@@ -390,49 +400,49 @@
             <div class="service-card">
                 <h3 class="es">🚀 SOLUCIONES EMPRESARIALES</h3>
                 <h3 class="en">🚀 BUSINESS SOLUTIONS</h3>
-                <p class="es">BRINDAMOS RESPUESTAS INTEGRALES ADAPTADAS A LOS RETOS Y NECESIDADES DE TU ORGANIZACIÓN EN EL MERCADO ACTUAL.</p>
+                <p class="es">BRINDAMOS RESPUESTAS INTEGRALES ADAPTADAS A LOS RETOS Y NECESIDADES DE SU ORGANIZACIÓN EN EL MERCADO ACTUAL.</p>
                 <p class="en">WE PROVIDE COMPREHENSIVE RESPONSES ADAPTED TO THE CHALLENGES AND NEEDS OF YOUR ORGANIZATION IN THE CURRENT MARKET.</p>
             </div>
             <div class="service-card">
                 <h3 class="es">💡 CONSULTORÍA Y ESTRATEGIA</h3>
                 <h3 class="en">💡 CONSULTING AND STRATEGY</h3>
-                <p class="es">ACOMPAÑAMOS TU CRECIMIENTO CON ANÁLISIS, PLANIFICACIÓN Y SOLUCIONES QUE GENERAN VALOR REAL Y SOSTENIBLE.</p>
+                <p class="es">ACOMPAÑAMOS SU CRECIMIENTO CON ANÁLISIS, PLANIFICACIÓN Y SOLUCIONES QUE GENERAN VALOR REAL Y SOSTENIBLE.</p>
                 <p class="en">WE SUPPORT YOUR GROWTH WITH ANALYSIS, PLANNING AND SOLUTIONS THAT GENERATE REAL AND SUSTAINABLE VALUE.</p>
             </div>
             <div class="service-card">
                 <h3 class="es">🔧 SOPORTE, MANTENIMIENTO Y ACTUALIZACIÓN</h3>
                 <h3 class="en">🔧 SUPPORT, MAINTENANCE AND UPDATES</h3>
-                <p class="es">GESTIONAMOS, ARREGLAMOS Y ACTUALIZAMOS TODO LO RELACIONADO CON HARDWARE Y SOFTWARE DE TU EMPRESA.</p>
+                <p class="es">GESTIONAMOS, REPARAMOS Y ACTUALIZAMOS TODO LO RELACIONADO CON HARDWARE Y SOFTWARE DE SU EMPRESA.</p>
                 <p class="en">WE MANAGE, REPAIR AND UPDATE EVERYTHING RELATED TO YOUR COMPANY'S HARDWARE AND SOFTWARE.</p>
             </div>
             <div class="service-card">
                 <h3 class="es">✅ ACOMPAÑAMIENTO Y AUDITORÍAS OPERATIVAS</h3>
                 <h3 class="en">✅ MONITORING AND OPERATIONAL AUDITS</h3>
-                <p class="es">REALIZAMOS ACOMPAÑAMIENTO A TU OPERACIÓN Y REALIZAMOS AUDITORÍAS DE CONTROL DE ACUERDO A LAS NECESIDADES DE TU OPERACIÓN.</p>
+                <p class="es">REALIZAMOS ACOMPAÑAMIENTO A SU OPERACIÓN Y REALIZAMOS AUDITORÍAS DE CONTROL DE ACUERDO A LAS NECESIDADES DE SU OPERACIÓN.</p>
                 <p class="en">WE PROVIDE MONITORING FOR YOUR OPERATION AND PERFORM CONTROL AUDITS ACCORDING TO YOUR OPERATION'S NEEDS.</p>
             </div>
             <div class="service-card">
-                <h3 class="es">📊 ANÁLISIS DE DATOS Y BUSINESS INTELLIGENCE</h3>
+                <h3 class="es">📊 ANÁLISIS DE DATOS E INTELIGENCIA COMERCIAL</h3>
                 <h3 class="en">📊 DATA ANALYSIS AND BUSINESS INTELLIGENCE</h3>
-                <p class="es">ANÁLISIS DE DATOS MEDIANTE BUSINESS INTELLIGENCE, CREACIÓN Y SEGUIMIENTO DE DASHBOARDS PARA TOMAR MEJORES DECISIONES.</p>
+                <p class="es">ANÁLISIS DE DATOS MEDIANTE INTELIGENCIA COMERCIAL, CREACIÓN Y SEGUIMIENTO DE PANELES DE CONTROL PARA TOMAR MEJORES DECISIONES.</p>
                 <p class="en">DATA ANALYSIS THROUGH BUSINESS INTELLIGENCE, CREATION AND MONITORING OF DASHBOARDS FOR BETTER DECISION-MAKING.</p>
             </div>
             <div class="service-card">
                 <h3 class="es">🎓 CAPACITACIÓN Y FORMACIÓN</h3>
                 <h3 class="en">🎓 TRAINING AND EDUCATION</h3>
-                <p class="es">BRINDAMOS CAPACITACIÓN PERSONALIZADA PARA TU EQUIPO, FORTALECIENDO SUS HABILIDADES Y CONOCIMIENTOS EN LAS HERRAMIENTAS Y PROCESOS DE TU EMPRESA.</p>
+                <p class="es">BRINDAMOS CAPACITACIÓN PERSONALIZADA PARA SU EQUIPO, FORTALECIENDO SUS HABILIDADES Y CONOCIMIENTOS EN LAS HERRAMIENTAS Y PROCESOS DE SU EMPRESA.</p>
                 <p class="en">WE PROVIDE PERSONALIZED TRAINING FOR YOUR TEAM, STRENGTHENING THEIR SKILLS AND KNOWLEDGE IN YOUR COMPANY'S TOOLS AND PROCESSES.</p>
             </div>
         </div>
     </section>
 
     <section class="contact-section" id="contacto">
-        <h2 class="es">CONTÁCTANOS</h2>
+        <h2 class="es">CONTÁCTENOS</h2>
         <h2 class="en">CONTACT US</h2>
         <p class="es">📍 COLOMBIA</p>
         <p class="en">📍 COLOMBIA</p>
         <p>📞 +57 317 423 5796</p>
-        <p>📧 OPERAICOLOMBIA@GMAIL.COM</p>
+        <p>📧 operaicolombia@gmail.com</p>
     </section>
 
     <footer>
@@ -441,12 +451,38 @@
     </footer>
 
     <script>
-        // === 🤖 SISTEMA JARVIS ===
+        // === 🤖 SISTEMA JARVIS CON VOZ ===
         const jarvisBoton = document.getElementById('jarvisBoton');
         const jarvisVentana = document.getElementById('jarvisVentana');
         const jarvisCerrar = document.getElementById('jarvisCerrar');
         const jarvisCuerpo = document.getElementById('jarvisCuerpo');
         let jarvisAbierto = false;
+        let vozActiva = true;
+
+        // 🎙️ FUNCIÓN DE VOZ — que JARVIS HABLE
+        function hablar(texto) {
+            if (!vozActiva) return;
+            const limpio = texto.replace(/[#📊🚀💡🔧✅🎓📍📞📧]/g, ' ').replace(/\n/g, '. ');
+            const mensaje = new SpeechSynthesisUtterance(limpio);
+            mensaje.lang = 'es-ES';
+            mensaje.rate = 0.95;
+            mensaje.pitch = 0.9;
+            mensaje.volume = 1;
+
+            // Buscar voz masculina elegante
+            const voces = window.speechSynthesis.getVoices();
+            const vozPref = voces.find(v => v.lang === 'es-ES' && v.name.includes('Male'))
+                          || voces.find(v => v.lang === 'es-ES')
+                          || voces[0];
+            if (vozPref) mensaje.voice = vozPref;
+
+            window.speechSynthesis.speak(mensaje);
+        }
+
+        // Cargar voces cuando estén listas
+        if (window.speechSynthesis) {
+            window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+        }
 
         function agregarMensaje(texto) {
             const div = document.createElement('div');
@@ -454,6 +490,7 @@
             div.innerHTML = texto.replace(/\n/g, '<br>');
             jarvisCuerpo.appendChild(div);
             jarvisCuerpo.scrollTop = jarvisCuerpo.scrollHeight;
+            hablar(texto); // 🎙️ Lee el mensaje en voz alta
         }
 
         function agregarOpciones() {
@@ -475,16 +512,16 @@
 
         function responder(opcion) {
             const respuestas = {
-                servicios: 'Ofrecemos 6 servicios principales:\n\n🚀 Soluciones Empresariales\n💡 Consultoría y Estrategia\n🔧 Soporte y Mantenimiento\n✅ Auditorías Operativas\n📊 Análisis de Datos y BI\n🎓 Capacitación\n\n¿Desea más información sobre alguno?',
-                ubicacion: 'Nos encontramos operando desde COLOMBIA 🇨🇴\n\nAtendemos a toda la región con soluciones remotas y presenciales.',
-                contacto: 'Puede comunicarse con nosotros a través de:\n\n📞 +57 317 423 5796\n📧 OPERAICOLOMBIA@GMAIL.COM\n💬 O pulsando el botón de WhatsApp',
-                whatsapp: 'Comunicándole con un asesor humano en línea...\n\n✅ Abriendo WhatsApp...'
+                servicios: 'Ofrecemos seis servicios principales: Soluciones Empresariales, Consultoría y Estrategia, Soporte y Mantenimiento, Auditorías Operativas, Análisis de Datos e Inteligencia Comercial, y Capacitación. ¿Desea más información sobre alguno?',
+                ubicacion: 'Operamos desde COLOMBIA. Atendemos a toda la región con soluciones remotas y presenciales.',
+                contacto: 'Puede comunicarse con nosotros al teléfono: +57 317 423 5796, al correo: operaicolombia@gmail.com, o pulsando el botón de WhatsApp.',
+                whatsapp: 'Comunicándole con un asesor humano en línea... Abriendo WhatsApp...'
             };
             agregarMensaje(respuestas[opcion]);
             if (opcion === 'whatsapp') {
                 setTimeout(() => {
                     window.open('https://wa.me/573174235796?text=HOLA!%20ME%20GUSTARÍA%20SOLICITAR%20INFORMACIÓN%20SOBRE%20SUS%20SERVICIOS', '_blank');
-                }, 1500);
+                }, 2000);
             }
         }
 
@@ -493,15 +530,16 @@
             jarvisVentana.classList.toggle('abierta', jarvisAbierto);
             if (jarvisAbierto && jarvisCuerpo.children.length === 0) {
                 setTimeout(() => {
-                    agregarMensaje('SISTEMA INICIALIZADO... ✅\n\nBienvenido a OPERAI COLOMBIA. Soy su asistente virtual.\n\n¿En qué puedo asistirle hoy?');
+                    agregarMensaje('SISTEMA INICIALIZADO. Bienvenido a OPERAI COLOMBIA. Soy su asistente virtual. ¿En qué puedo ayudarle hoy?');
                     agregarOpciones();
-                }, 400);
+                }, 500);
             }
         });
 
         jarvisCerrar.addEventListener('click', () => {
             jarvisAbierto = false;
             jarvisVentana.classList.remove('abierta');
+            window.speechSynthesis.cancel(); // Detener voz al cerrar
         });
 
         // === RESTO DEL SISTEMA ===
@@ -527,17 +565,17 @@
         let idiomaActual = 'es';
         const btnIdioma = document.getElementById('btnIdioma');
         function cambiarIdioma() {
-            const textosEs = document.querySelectorAll('.es');
-            const textosEn = document.querySelectorAll('.en');
+            const textosES = document.querySelectorAll('.es');
+            const textosEN = document.querySelectorAll('.en');
             if (idiomaActual === 'es') {
-                textosEs.forEach(el => el.style.display = 'none');
-                textosEn.forEach(el => el.style.display = 'block');
+                textosES.forEach(el => el.style.display = 'none');
+                textosEN.forEach(el => el.style.display = 'block');
                 idiomaActual = 'en';
                 btnIdioma.textContent = '🌐 ES';
                 document.documentElement.lang = 'en';
             } else {
-                textosEs.forEach(el => el.style.display = 'block');
-                textosEn.forEach(el => el.style.display = 'none');
+                textosES.forEach(el => el.style.display = 'block');
+                textosEN.forEach(el => el.style.display = 'none');
                 idiomaActual = 'es';
                 btnIdioma.textContent = '🌐 EN';
                 document.documentElement.lang = 'es';
@@ -549,31 +587,37 @@
         let reproduciendo = false;
         boton.addEventListener('click', function() {
             if (!reproduciendo) {
-                audio.play().then(() => { boton.textContent = '⏸'; reproduciendo = true; });
+                audio.play().then(() => {
+                    boton.textContent = '⏸';
+                    reproduciendo = true;
+                });
             } else {
-                audio.pause(); boton.textContent = '▶'; reproduciendo = false;
+                audio.pause();
+                boton.textContent = '▶';
+                reproduciendo = false;
             }
         });
-        const sections = document.querySelectorAll('section');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
+        const secciones = document.querySelectorAll('section');
+        const observador = new IntersectionObserver((entradas) => {
+            entradas.forEach(entrada => {
+                if (entrada.isIntersecting) entrada.target.classList.add('visible');
             });
         }, { threshold: 0.1 });
-        sections.forEach(section => observer.observe(section));
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorRing = document.querySelector('.cursor-ring');
-        let mouseX = 0, mouseY = 0;
-        document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
-        function animateCursor() {
-            cursorDot.style.left = `${mouseX}px`;
-            cursorDot.style.top = `${mouseY}px`;
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
+        secciones.forEach(s => observador.observe(s));
+        const puntero = document.querySelector('.cursor-dot');
+        const anillo = document.querySelector('.cursor-ring');
+        let ratonX = 0, ratonY = 0;
+        document.addEventListener('mousemove', e => {
+            ratonX = e.clientX;
+            ratonY = e.clientY;
+            puntero.style.left = ratonX + 'px';
+            puntero.style.top = ratonY + 'px';
+            anillo.style.left = ratonX + 'px';
+            anillo.style.top = ratonY + 'px';
+        });
         document.querySelectorAll('a, .service-card, .btn, .btn-musica, .btn-idioma, .btn-whatsapp, .instalar-app, .jarvis-boton').forEach(el => {
-            el.addEventListener('mouseenter', () => cursorRing.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
+            el.addEventListener('mouseenter', () => anillo.classList.add('hover'));
+            el.addEventListener('mouseleave', () => anillo.classList.remove('hover'));
         });
     </script>
 </body>
