@@ -75,7 +75,7 @@
         .instalar-app.mostrar {display: block;}
         .instalar-app:hover {transform: scale(1.05); box-shadow: 0 0 30px rgba(79,249,243,0.5);}
 
-        /* ===== ASISTENTE JARVIS CON VOZ ===== */
+        /* ===== ASISTENTE JARVIS CON VOZ ESTILO IRON MAN ===== */
         .jarvis-boton {
             position: fixed; bottom: 14rem; right: 2rem;
             width: 65px; height: 65px; border-radius: 50%;
@@ -159,33 +159,6 @@
             background: rgba(0,204,255,0.2); border-color: var(--azul-brillo);
             transform: translateX(4px);
         }
-        .jarvis-pie {
-            padding: 0.8rem 1.2rem; border-top: 1px solid rgba(0,204,255,0.2);
-            display: flex; gap: 0.5rem;
-        }
-        .jarvis-entrada {
-            flex:1; padding: 0.7rem 1rem; background: rgba(0,0,0,0.35);
-            border: 1px solid rgba(0,204,255,0.3); border-radius: 8px;
-            color: #CCEEFF; font-size: 0.85rem; outline: none;
-        }
-        .jarvis-entrada:focus {border-color: var(--azul-jarvis); box-shadow: 0 0 8px rgba(0,204,255,0.25);}
-        .jarvis-enviar {
-            padding: 0.7rem 1rem; background: linear-gradient(90deg, #0066AA, #0099DD);
-            border: none; border-radius: 8px; color: white; font-weight: 600; cursor: pointer;
-            transition: all 0.25s ease;
-        }
-        .jarvis-enviar:hover {background: linear-gradient(90deg, #0077CC, #00AAEE);}
-        .jarvis-control-voz {
-            display: flex; align-items: center; gap: 0.4rem; margin-top: 0.6rem;
-            padding: 0.4rem 0.8rem; background: rgba(0,204,255,0.08);
-            border-radius: 6px; font-size: 0.78rem; color: #88CCFF;
-        }
-        .jarvis-btn-voz {
-            background: none; border: none; color: var(--azul-jarvis); cursor: pointer;
-            font-size: 1rem; padding: 0.2rem; transition: transform 0.2s;
-        }
-        .jarvis-btn-voz:hover {transform: scale(1.2);}
-
         .cursor-dot {
             width: 10px; height: 10px;
             background: linear-gradient(90deg, var(--azul-medio), var(--turquesa-brillante));
@@ -317,7 +290,7 @@
 </head>
 <body>
 
-    <!-- 🤖 NUESTRO ASISTENTE JARVIS CON VOZ -->
+    <!-- 🤖 NUESTRO ASISTENTE JARVIS CON VOZ ESTILO IRON MAN -->
     <button class="jarvis-boton" id="jarvisBoton">J</button>
     <div class="jarvis-ventana" id="jarvisVentana">
         <div class="jarvis-cabecera">
@@ -451,7 +424,7 @@
     </footer>
 
     <script>
-        // === 🤖 SISTEMA JARVIS CON VOZ ===
+        // === 🤖 SISTEMA JARVIS CON VOZ ESTILO IRON MAN ===
         const jarvisBoton = document.getElementById('jarvisBoton');
         const jarvisVentana = document.getElementById('jarvisVentana');
         const jarvisCerrar = document.getElementById('jarvisCerrar');
@@ -459,27 +432,44 @@
         let jarvisAbierto = false;
         let vozActiva = true;
 
-        // 🎙️ FUNCIÓN DE VOZ — que JARVIS HABLE
+        // 🎙️ VOZ ESTILO JARVIS — Elegante, pausada, grave y distinguida
         function hablar(texto) {
             if (!vozActiva) return;
             const limpio = texto.replace(/[#📊🚀💡🔧✅🎓📍📞📧]/g, ' ').replace(/\n/g, '. ');
             const mensaje = new SpeechSynthesisUtterance(limpio);
+            
+            // 🎙️ PARÁMETROS ESTILO JARVIS ORIGINAL
             mensaje.lang = 'es-ES';
-            mensaje.rate = 0.95;
-            mensaje.pitch = 0.9;
-            mensaje.volume = 1;
+            mensaje.rate = 0.85;      // ⏱️ Más lento y pausado — como JARVIS
+            mensaje.pitch = 0.75;     // 🎵 Más grave y profundo — tono distinguido
+            mensaje.volume = 1;        // 🔊 Claro y firme
 
-            // Buscar voz masculina elegante
+            // 🇬🇧 BUSCAR LA VOZ MÁS ELEGANTE Y PROFUNDA DISPONIBLE
             const voces = window.speechSynthesis.getVoices();
-            const vozPref = voces.find(v => v.lang === 'es-ES' && v.name.includes('Male'))
-                          || voces.find(v => v.lang === 'es-ES')
-                          || voces[0];
+            let vozPref = null;
+
+            // 1° Intento: Voz masculina española profunda
+            vozPref = voces.find(v => 
+                v.lang === 'es-ES' && 
+                (v.name.includes('Male') || v.name.includes('Hombre') || v.name.includes('Español'))
+            );
+            
+            // 2° Intento: Cualquier voz en español
+            if (!vozPref) {
+                vozPref = voces.find(v => v.lang === 'es-ES');
+            }
+            
+            // 3° Último recurso: primera voz disponible
+            if (!vozPref && voces.length > 0) {
+                vozPref = voces[0];
+            }
+            
             if (vozPref) mensaje.voice = vozPref;
 
             window.speechSynthesis.speak(mensaje);
         }
 
-        // Cargar voces cuando estén listas
+        // Cargar voces cuando el navegador las tenga listas
         if (window.speechSynthesis) {
             window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
         }
