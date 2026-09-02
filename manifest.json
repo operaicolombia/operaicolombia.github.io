@@ -1,0 +1,19 @@
+{
+  "name": "OPERAI COLOMBIA",
+  "short_name": "OPERAI",
+  "description": "Soluciones confiables y profesionales para tu empresa",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0830",
+  "theme_color": "#11E7DB",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "OPERAICOL.jpeg",
+      "sizes": "any",
+      "type": "image/jpeg"
+    }
+  ],
+  "languages": ["es", "en"],
+  "categories": ["business", "productivity"]
+}
