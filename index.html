@@ -18,6 +18,7 @@
             --turquesa-brillante: #4FF9F3;
             --blanco-puro: #FFFFFF;
             --blanco-suave: #E8FFFD;
+            --whatsapp: #25D366;
         }
         html {
             scroll-behavior: smooth;
@@ -55,6 +56,50 @@
         .btn-musica:hover {
             transform: scale(1.15);
             box-shadow: 0 0 40px rgba(79, 249, 243, 0.7);
+        }
+        /* ===== BOTÓN DE WHATSAPP ===== */
+        .btn-whatsapp {
+            position: fixed;
+            bottom: 7.5rem;
+            right: 2rem;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            background: var(--whatsapp);
+            color: white;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 25px rgba(37, 211, 102, 0.4);
+            z-index: 100;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        .btn-whatsapp:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 40px rgba(37, 211, 102, 0.6);
+        }
+        /* ===== BOTÓN DE TRADUCCIÓN ===== */
+        .btn-idioma {
+            position: fixed;
+            top: 1.2rem;
+            right: 1.2rem;
+            padding: 0.6rem 1.2rem;
+            background: linear-gradient(90deg, var(--azul-medio), var(--turquesa-brillante));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            z-index: 101;
+            box-shadow: 0 0 20px rgba(17, 231, 219, 0.3);
+            transition: all 0.3s ease;
+        }
+        .btn-idioma:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 35px rgba(79, 249, 243, 0.5);
         }
         .cursor-dot {
             width: 10px;
@@ -263,6 +308,8 @@
             font-size: 0.95rem;
             margin-top: 3rem;
         }
+        /* Ocultar textos en inglés por defecto */
+        .en { display: none; }
         @media (max-width: 1024px) {
             .hero {
                 flex-direction: column;
@@ -304,81 +351,164 @@
                 width: 55px;
                 height: 55px;
             }
+            .btn-whatsapp {
+                bottom: 7rem;
+                right: 1.2rem;
+                width: 55px;
+                height: 55px;
+                font-size: 1.5rem;
+            }
+            .btn-idioma {
+                top: auto;
+                bottom: 1.2rem;
+                left: 1.2rem;
+                right: auto;
+            }
             .cursor-dot, .cursor-ring { display: none; }
             * { cursor: auto; }
         }
     </style>
 </head>
 <body>
+
+    <!-- BOTÓN DE TRADUCCIÓN -->
+    <button class="btn-idioma" id="btnIdioma">🌐 EN</button>
+
+    <!-- BOTÓN DE WHATSAPP -->
+    <a href="https://wa.me/573174235796?text=HOLA!%20ME%20GUSTARÍA%20SOLICITAR%20INFORMACIÓN%20SOBRE%20SUS%20SERVICIOS" target="_blank" class="btn-whatsapp">💬</a>
+
     <div class="cursor-dot"></div>
     <div class="cursor-ring"></div>
+
     <div class="audio-oculto">
         <audio id="musica" src="fortunateSon.mp3" loop>
             Tu navegador no soporta audio.
         
     </div>
+
     <div class="reproductor">
         <button class="btn-musica" id="botonMusica">▶</button>
     </div>
+
     <header>
         <img src="OPERAICOL.jpeg" alt="OPERAI COLOMBIA" class="logo-img">
         <nav>
-            <a href="#inicio">INICIO</a>
-            <a href="#nosotros">NOSOTROS</a>
-            <a href="#servicios">SERVICIOS</a>
-            <a href="#contacto">CONTACTO</a>
+            <a href="#inicio" class="es">INICIO</a>
+            <a href="#inicio" class="en">HOME</a>
+            <a href="#nosotros" class="es">NOSOTROS</a>
+            <a href="#nosotros" class="en">ABOUT US</a>
+            <a href="#servicios" class="es">SERVICIOS</a>
+            <a href="#servicios" class="en">SERVICES</a>
+            <a href="#contacto" class="es">CONTACTO</a>
+            <a href="#contacto" class="en">CONTACT</a>
         </nav>
     </header>
+
     <section class="hero visible" id="inicio">
         <div class="hero-texto">
-            <h1>OPERAI<br>COLOMBIA</h1>
-            <p>SOLUCIONES CONFIABLES Y PROFESIONALES PARA TU EMPRESA. CALIDAD, CONTROL, COMPROMISO Y TECNOLOGÍA EN CADA PROYECTO.</p>
-            <a href="#contacto" class="btn">SOLICITAR INFORMACIÓN</a>
+            <h1 class="es">OPERAI<br>COLOMBIA</h1>
+            <h1 class="en">OPERAI<br>COLOMBIA</h1>
+            <p class="es">SOLUCIONES CONFIABLES Y PROFESIONALES PARA TU EMPRESA. CALIDAD, CONTROL, COMPROMISO Y TECNOLOGÍA EN CADA PROYECTO.</p>
+            <p class="en">RELIABLE AND PROFESSIONAL SOLUTIONS FOR YOUR COMPANY. QUALITY, CONTROL, COMMITMENT AND TECHNOLOGY IN EVERY PROJECT.</p>
+            <a href="#contacto" class="btn es">SOLICITAR INFORMACIÓN</a>
+            <a href="#contacto" class="btn en">REQUEST INFORMATION</a>
         </div>
         <div class="globo-container">
             <div class="globo"></div>
         </div>
     </section>
+
     <section id="nosotros">
-        <h2>¿QUIÉNES SOMOS?</h2>
-        <p class="about-text">
+        <h2 class="es">¿QUIÉNES SOMOS?</h2>
+        <h2 class="en">WHO ARE WE?</h2>
+        <p class="about-text es">
             SOMOS UNA EMPRESA COMPROMETIDA CON OFRECER SOLUCIONES INTEGRALES EN COLOMBIA.
             NUESTRA EXPERIENCIA DE MÁS DE 22 AÑOS EN EL SECTOR Y DEDICACIÓN NOS PERMITEN BRINDAR UN SERVICIO DE CALIDAD,
             ADAPTADO A LAS NECESIDADES REALES DE NUESTROS CLIENTES. TRABAJAMOS CON
             COMPROMISO, TRANSPARENCIA Y EXCELENCIA EN CADA PROYECTO QUE EMPRENDEMOS.
         </p>
+        <p class="about-text en">
+            WE ARE A COMPANY COMMITTED TO OFFERING COMPREHENSIVE SOLUTIONS IN COLOMBIA.
+            OUR EXPERIENCE OF MORE THAN 22 YEARS IN THE SECTOR AND DEDICATION ALLOW US TO DELIVER QUALITY SERVICES,
+            ADAPTED TO THE REAL NEEDS OF OUR CLIENTS. WE WORK WITH
+            COMMITMENT, TRANSPARENCY AND EXCELLENCE IN EVERY PROJECT WE UNDERTAKE.
+        </p>
     </section>
+
     <section id="servicios">
-        <h2>NUESTROS SERVICIOS</h2>
+        <h2 class="es">NUESTROS SERVICIOS</h2>
+        <h2 class="en">OUR SERVICES</h2>
         <div class="services-grid">
             <div class="service-card">
-                <h3>🚀 SOLUCIONES EMPRESARIALES</h3>
-                <p>BRINDAMOS RESPUESTAS INTEGRALES ADAPTADAS A LOS RETOS Y NECESIDADES DE TU ORGANIZACIÓN EN EL MERCADO ACTUAL.</p>
+                <h3 class="es">🚀 SOLUCIONES EMPRESARIALES</h3>
+                <h3 class="en">🚀 BUSINESS SOLUTIONS</h3>
+                <p class="es">BRINDAMOS RESPUESTAS INTEGRALES ADAPTADAS A LOS RETOS Y NECESIDADES DE TU ORGANIZACIÓN EN EL MERCADO ACTUAL.</p>
+                <p class="en">WE PROVIDE COMPREHENSIVE RESPONSES ADAPTED TO THE CHALLENGES AND NEEDS OF YOUR ORGANIZATION IN THE CURRENT MARKET.</p>
             </div>
             <div class="service-card">
-                <h3>💡 CONSULTORÍA Y ESTRATEGIA</h3>
-                <p>ACOMPAÑAMOS TU CRECIMIENTO CON ANÁLISIS, PLANIFICACIÓN Y SOLUCIONES QUE GENERAN VALOR REAL Y SOSTENIBLE.</p>
+                <h3 class="es">💡 CONSULTORÍA Y ESTRATEGIA</h3>
+                <h3 class="en">💡 CONSULTING AND STRATEGY</h3>
+                <p class="es">ACOMPAÑAMOS TU CRECIMIENTO CON ANÁLISIS, PLANIFICACIÓN Y SOLUCIONES QUE GENERAN VALOR REAL Y SOSTENIBLE.</p>
+                <p class="en">WE SUPPORT YOUR GROWTH WITH ANALYSIS, PLANNING AND SOLUTIONS THAT GENERATE REAL AND SUSTAINABLE VALUE.</p>
             </div>
             <div class="service-card">
-                <h3>🔧 SOPORTE, MANTENIMIENTO Y ACTUALIZACIÓN</h3>
-                <p>GESTIONAMOS, ARREGLAMOS Y ACTUALIZAMOS TODO LO RELACIONADO CON HARDWARE Y SOFTWARE DE TU EMPRESA.</p>
+                <h3 class="es">🔧 SOPORTE, MANTENIMIENTO Y ACTUALIZACIÓN</h3>
+                <h3 class="en">🔧 SUPPORT, MAINTENANCE AND UPDATES</h3>
+                <p class="es">GESTIONAMOS, ARREGLAMOS Y ACTUALIZAMOS TODO LO RELACIONADO CON HARDWARE Y SOFTWARE DE TU EMPRESA.</p>
+                <p class="en">WE MANAGE, REPAIR AND UPDATE EVERYTHING RELATED TO YOUR COMPANY'S HARDWARE AND SOFTWARE.</p>
             </div>
             <div class="service-card">
-                <h3>✅ ACOMPAÑAMIENTO Y AUDITORÍAS OPERATIVAS</h3>
-                <p>REALIZAMOS ACOMPAÑAMIENTO A TU OPERACIÓN Y REALIZAMOS AUDITORÍAS DE CONTROL DE ACUERDO A LAS NECESIDADES DE TU OPERACIÓN.</p>
+                <h3 class="es">✅ ACOMPAÑAMIENTO Y AUDITORÍAS OPERATIVAS</h3>
+                <h3 class="en">✅ MONITORING AND OPERATIONAL AUDITS</h3>
+                <p class="es">REALIZAMOS ACOMPAÑAMIENTO A TU OPERACIÓN Y REALIZAMOS AUDITORÍAS DE CONTROL DE ACUERDO A LAS NECESIDADES DE TU OPERACIÓN.</p>
+                <p class="en">WE PROVIDE MONITORING FOR YOUR OPERATION AND PERFORM CONTROL AUDITS ACCORDING TO YOUR OPERATION'S NEEDS.</p>
             </div>
         </div>
     </section>
+
     <section class="contact-section" id="contacto">
-        <h2>CONTÁCTANOS</h2>
-        <p>📍 COLOMBIA</p>
+        <h2 class="es">CONTÁCTANOS</h2>
+        <h2 class="en">CONTACT US</h2>
+        <p class="es">📍 COLOMBIA</p>
+        <p class="en">📍 COLOMBIA</p>
         <p>📞 +57 317 423 5796</p>
         <p>📧 OPERAICOLOMBIA@GMAIL.COM</p>
     </section>
+
     <footer>
-        <p>&copy; 2026 OPERAI COLOMBIA. TODOS LOS DERECHOS RESERVADOS.</p>
+        <p class="es">&copy; 2026 OPERAI COLOMBIA. TODOS LOS DERECHOS RESERVADOS.</p>
+        <p class="en">&copy; 2026 OPERAI COLOMBIA. ALL RIGHTS RESERVED.</p>
     </footer>
+
     <script>
+        // === TRADUCCIÓN ESPAÑOL ↔ INGLÉS ===
+        let idiomaActual = 'es';
+        const btnIdioma = document.getElementById('btnIdioma');
+
+        function cambiarIdioma() {
+            const textosEs = document.querySelectorAll('.es');
+            const textosEn = document.querySelectorAll('.en');
+
+            if (idiomaActual === 'es') {
+                // Cambiar a INGLÉS
+                textosEs.forEach(el => el.style.display = 'none');
+                textosEn.forEach(el => el.style.display = 'block');
+                idiomaActual = 'en';
+                btnIdioma.textContent = '🌐 ES';
+                document.documentElement.lang = 'en';
+            } else {
+                // Cambiar a ESPAÑOL
+                textosEs.forEach(el => el.style.display = 'block');
+                textosEn.forEach(el => el.style.display = 'none');
+                idiomaActual = 'es';
+                btnIdioma.textContent = '🌐 EN';
+                document.documentElement.lang = 'es';
+            }
+        }
+
+        btnIdioma.addEventListener('click', cambiarIdioma);
+
+        // === REPRODUCTOR DE MÚSICA ===
         const audio = document.getElementById('musica');
         const boton = document.getElementById('botonMusica');
         let reproduciendo = false;
@@ -394,6 +524,8 @@
                 reproduciendo = false;
             }
         });
+
+        // === ANIMACIONES AL DESPLAZAR ===
         const sections = document.querySelectorAll('section');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -401,6 +533,8 @@
             });
         }, { threshold: 0.1 });
         sections.forEach(section => observer.observe(section));
+
+        // === EFECTO DEL CURSOR ===
         const cursorDot = document.querySelector('.cursor-dot');
         const cursorRing = document.querySelector('.cursor-ring');
         let mouseX = 0, mouseY = 0;
@@ -420,10 +554,12 @@
             requestAnimationFrame(animateCursor);
         }
         animateCursor();
-        document.querySelectorAll('a, .service-card, .btn, .btn-musica').forEach(el => {
+
+        document.querySelectorAll('a, .service-card, .btn, .btn-musica, .btn-idioma, .btn-whatsapp').forEach(el => {
             el.addEventListener('mouseenter', () => cursorRing.classList.add('hover'));
             el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
         });
     </script>
+
 </body>
 </html>
