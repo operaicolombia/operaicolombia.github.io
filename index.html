@@ -74,7 +74,7 @@
         }
         .instalar-app.mostrar {display: block;}
         .instalar-app:hover {transform: scale(1.05); box-shadow: 0 0 30px rgba(79,249,243,0.5);}
-        /* ===== ASISTENTE JARVIS CON VOZ ESTILO IRON MAN ===== */
+        /* ===== ASISTENTE JARVIS CON ACENTO COLOMBIANO 🇨🇴 ===== */
         .jarvis-boton {
             position: fixed; bottom: 14rem; right: 2rem;
             width: 65px; height: 65px; border-radius: 50%;
@@ -288,7 +288,7 @@
     </style>
 </head>
 <body>
-    <!-- 🤖 NUESTRO ASISTENTE JARVIS CON VOZ ESTILO IRON MAN -->
+    <!-- 🤖 ASISTENTE JARVIS CON ACENTO COLOMBIANO 🇨🇴 -->
     <button class="jarvis-boton" id="jarvisBoton">J</button>
     <div class="jarvis-ventana" id="jarvisVentana">
         <div class="jarvis-cabecera">
@@ -416,7 +416,7 @@
     </footer>
 
     <script>
-        // === 🤖 SISTEMA JARVIS CON VOZ ESTILO IRON MAN ===
+        // === 🤖 JARVIS CON ACENTO COLOMBIANO 🇨🇴 ===
         const jarvisBoton = document.getElementById('jarvisBoton');
         const jarvisVentana = document.getElementById('jarvisVentana');
         const jarvisCerrar = document.getElementById('jarvisCerrar');
@@ -424,39 +424,48 @@
         let jarvisAbierto = false;
         let vozActiva = true;
 
-        // 🎙️ VOZ ESTILO JARVIS — Elegante, pausada, grave y distinguida
-        // ✅ CORREGIDO: Para que diga OPERAI como palabra y NO la deletree
+        // 🎙️ VOZ CON ACENTO COLOMBIANO 🇨🇴
         function hablar(texto) {
             if (!vozActiva) return;
-            // El truco: cambiamos la escritura para que la voz lo pronuncie fluido
+            // ✅ Para que diga OPERAI fluido y NO lo deletree
             const corregido = texto
                 .replace(/OPERAI/g, 'Ó-pera-i')
                 .replace(/OPERAI COLOMBIA/g, 'Ó-pera-i Colombia');
             const limpio = corregido.replace(/[#📊🚀💡🔧✅🎓📍📞📧]/g, ' ').replace(/\n/g, '. ');
             const mensaje = new SpeechSynthesisUtterance(limpio);
             
-            // 🎙️ PARÁMETROS ESTILO JARVIS ORIGINAL
-            mensaje.lang = 'es-ES';
-            mensaje.rate = 0.85;      // ⏱️ Más lento y pausado — como JARVIS
-            mensaje.pitch = 0.75;     // 🎵 Más grave y profundo — tono distinguido
-            mensaje.volume = 1;        // 🔊 Claro y firme
+            // 🇨🇴 ACENTO COLOMBIANO — configurado para Colombia
+            mensaje.lang = 'es-CO';      // 🔑 ESPAÑOL DE COLOMBIA
+            mensaje.rate = 0.95;         // ⏱️ Ritmo natural, claro y pausado
+            mensaje.pitch = 0.9;         // 🎵 Tono natural, no tan grave
+            mensaje.volume = 1;           // 🔊 Claro y fuerte
 
-            // 🇬🇧 BUSCAR LA VOZ MÁS ELEGANTE Y PROFUNDA DISPONIBLE
+            // 🇨🇴 BUSCAR PRIMERO VOZ COLOMBIANA, si no hay usar español latino
             const voces = window.speechSynthesis.getVoices();
             let vozPref = null;
 
-            // 1° Intento: Voz masculina española profunda
+            // 1° Intento: Voz COLOMBIANA primero
             vozPref = voces.find(v => 
-                v.lang === 'es-ES' && 
-                (v.name.includes('Male') || v.name.includes('Hombre') || v.name.includes('Español'))
+                v.lang === 'es-CO' || 
+                v.lang.startsWith('es-CO') ||
+                v.name.includes('Colombia')
             );
             
-            // 2° Intento: Cualquier voz en español
+            // 2° Intento: Cualquier español latinoamericano
             if (!vozPref) {
-                vozPref = voces.find(v => v.lang === 'es-ES');
+                vozPref = voces.find(v => 
+                    v.lang === 'es-MX' || v.lang === 'es-AR' || 
+                    v.lang === 'es-CL' || v.lang === 'es-PE' ||
+                    v.lang.startsWith('es-') && !v.lang.includes('ES')
+                );
             }
             
-            // 3° Último recurso: primera voz disponible
+            // 3° Último recurso: cualquier voz en español
+            if (!vozPref) {
+                vozPref = voces.find(v => v.lang.startsWith('es-'));
+            }
+            
+            // 4° Si nada existe: usar la primera disponible
             if (!vozPref && voces.length > 0) {
                 vozPref = voces[0];
             }
