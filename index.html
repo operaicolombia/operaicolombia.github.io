@@ -16,10 +16,13 @@
         :root {
             --azul-oscuro: #0A0830;
             --azul-medio: #2D0CE2;
+            --azul-jarvis: #00CCFF;
+            --azul-brillo: #66EFFF;
             --turquesa: #11E7DB;
             --turquesa-brillante: #4FF9F3;
             --blanco-puro: #FFFFFF;
             --blanco-suave: #E8FFFD;
+            --verde-activo: #00FF88;
             --whatsapp: #25D366;
         }
         html {scroll-behavior: smooth;}
@@ -71,6 +74,108 @@
         }
         .instalar-app.mostrar {display: block;}
         .instalar-app:hover {transform: scale(1.05); box-shadow: 0 0 30px rgba(79,249,243,0.5);}
+
+        /* ===== ASISTENTE JARVIS ===== */
+        .jarvis-boton {
+            position: fixed; bottom: 14rem; right: 2rem;
+            width: 65px; height: 65px; border-radius: 50%;
+            background: linear-gradient(135deg, #001133, #002255);
+            border: 2px solid var(--azul-jarvis);
+            color: var(--azul-jarvis); font-size: 1.6rem; font-weight: bold;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 102;
+            box-shadow: 0 0 15px rgba(0,204,255,0.4),
+                        inset 0 0 10px rgba(0,204,255,0.15);
+            transition: all 0.4s ease;
+            animation: pulso-jarvis 2s infinite alternate;
+        }
+        @keyframes pulso-jarvis {
+            from {box-shadow: 0 0 15px rgba(0,204,255,0.4), inset 0 0 10px rgba(0,204,255,0.15);}
+            to   {box-shadow: 0 0 25px rgba(0,204,255,0.7), inset 0 0 15px rgba(0,204,255,0.3);}
+        }
+        .jarvis-boton:hover {
+            transform: scale(1.15);
+            border-color: var(--azul-brillo);
+            color: var(--azul-brillo);
+        }
+        .jarvis-ventana {
+            position: fixed; bottom: 14rem; right: 6rem;
+            width: 360px; max-width: calc(100vw - 2rem);
+            background: linear-gradient(135deg, rgba(0,17,51,0.96), rgba(0,34,85,0.94));
+            border: 1px solid var(--azul-jarvis);
+            border-radius: 16px;
+            box-shadow: 0 0 30px rgba(0,204,255,0.35),
+                        inset 0 1px 0 rgba(0,204,255,0.15);
+            backdrop-filter: blur(12px);
+            z-index: 103;
+            transform: translateY(20px) scale(0.95);
+            opacity: 0; pointer-events: none;
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+        .jarvis-ventana.abierta {
+            transform: translateY(0) scale(1);
+            opacity: 1; pointer-events: auto;
+        }
+        .jarvis-cabecera {
+            padding: 0.9rem 1.2rem;
+            background: linear-gradient(90deg, rgba(0,204,255,0.08), transparent);
+            border-bottom: 1px solid rgba(0,204,255,0.25);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .jarvis-nombre {
+            color: var(--azul-brillo); font-weight: 700; font-size: 0.95rem;
+            letter-spacing: 1px; text-shadow: 0 0 8px rgba(0,204,255,0.5);
+        }
+        .jarvis-indicador {
+            display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: #88CCFF;
+        }
+        .jarvis-punto {
+            width: 10px; height: 10px; border-radius: 50%; background: var(--verde-activo);
+            box-shadow: 0 0 8px var(--verde-activo); animation: parpadeo 1.5s infinite;
+        }
+        @keyframes parpadeo {
+            0%,100% {opacity:1;} 50% {opacity:0.4;}
+        }
+        .jarvis-cerrar {
+            background: none; border: none; color: #88CCFF; font-size: 1.1rem; cursor: pointer;
+            transition: color 0.2s;
+        }
+        .jarvis-cerrar:hover {color: var(--azul-brillo);}
+        .jarvis-cuerpo {padding: 1rem 1.2rem; height: 300px; overflow-y: auto;}
+        .jarvis-mensaje {
+            background: rgba(0,204,255,0.06); border-left: 2px solid var(--azul-jarvis);
+            padding: 0.85rem 1rem; border-radius: 0 10px 10px 10px;
+            margin-bottom: 0.8rem; font-size: 0.88rem; line-height: 1.6;
+            color: #CCEEFF;
+        }
+        .jarvis-opcion {
+            background: rgba(0,204,255,0.1); border: 1px solid rgba(0,204,255,0.3);
+            color: var(--azul-brillo); padding: 0.65rem 1rem; border-radius: 8px;
+            margin: 0.4rem 0; cursor: pointer; font-size: 0.85rem; text-align: left;
+            width: 100%; transition: all 0.25s ease;
+        }
+        .jarvis-opcion:hover {
+            background: rgba(0,204,255,0.2); border-color: var(--azul-brillo);
+            transform: translateX(4px);
+        }
+        .jarvis-pie {
+            padding: 0.8rem 1.2rem; border-top: 1px solid rgba(0,204,255,0.2);
+            display: flex; gap: 0.5rem;
+        }
+        .jarvis-entrada {
+            flex:1; padding: 0.7rem 1rem; background: rgba(0,0,0,0.35);
+            border: 1px solid rgba(0,204,255,0.3); border-radius: 8px;
+            color: #CCEEFF; font-size: 0.85rem; outline: none;
+        }
+        .jarvis-entrada:focus {border-color: var(--azul-jarvis); box-shadow: 0 0 8px rgba(0,204,255,0.25);}
+        .jarvis-enviar {
+            padding: 0.7rem 1rem; background: linear-gradient(90deg, #0066AA, #0099DD);
+            border: none; border-radius: 8px; color: white; font-weight: 600; cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .jarvis-enviar:hover {background: linear-gradient(90deg, #0077CC, #00AAEE);}
+
         .cursor-dot {
             width: 10px; height: 10px;
             background: linear-gradient(90deg, var(--azul-medio), var(--turquesa-brillante));
@@ -193,12 +298,33 @@
             .btn-whatsapp {bottom: 7rem; right: 1.2rem; width: 55px; height: 55px; font-size: 1.5rem;}
             .btn-idioma {top: auto; bottom: 1.2rem; right: 7rem; font-size: 0.8rem; padding: 0.5rem 1rem;}
             .instalar-app {left: 1.2rem; bottom: 1.2rem; font-size: 0.75rem; padding: 0.5rem 0.8rem;}
+            .jarvis-boton {bottom: 14rem; right: 1.2rem; width: 55px; height: 55px; font-size: 1.3rem;}
+            .jarvis-ventana {right: 1.2rem; left: 1.2rem; width: auto;}
             .cursor-dot, .cursor-ring {display: none;}
             * {cursor: auto;}
         }
     </style>
 </head>
 <body>
+
+    <!-- 🤖 NUESTRO ASISTENTE JARVIS -->
+    <button class="jarvis-boton" id="jarvisBoton">J</button>
+    <div class="jarvis-ventana" id="jarvisVentana">
+        <div class="jarvis-cabecera">
+            <div>
+                <span class="jarvis-nombre">OPERAI-AI • JARVIS</span>
+                <div class="jarvis-indicador">
+                    <span class="jarvis-punto"></span>
+                    <span>SISTEMA ACTIVO</span>
+                </div>
+            </div>
+            <button class="jarvis-cerrar" id="jarvisCerrar">×</button>
+        </div>
+        <div class="jarvis-cuerpo" id="jarvisCuerpo">
+            <!-- Mensajes aparecerán aquí -->
+        </div>
+    </div>
+
     <button class="instalar-app" id="btnInstalar">📲 INSTALAR APP</button>
     <button class="btn-idioma" id="btnIdioma">🌐 EN</button>
     <a href="https://wa.me/573174235796?text=HOLA!%20ME%20GUSTARÍA%20SOLICITAR%20INFORMACIÓN%20SOBRE%20SUS%20SERVICIOS" target="_blank" class="btn-whatsapp">💬</a>
@@ -315,11 +441,73 @@
     </footer>
 
     <script>
+        // === 🤖 SISTEMA JARVIS ===
+        const jarvisBoton = document.getElementById('jarvisBoton');
+        const jarvisVentana = document.getElementById('jarvisVentana');
+        const jarvisCerrar = document.getElementById('jarvisCerrar');
+        const jarvisCuerpo = document.getElementById('jarvisCuerpo');
+        let jarvisAbierto = false;
+
+        function agregarMensaje(texto) {
+            const div = document.createElement('div');
+            div.className = 'jarvis-mensaje';
+            div.innerHTML = texto.replace(/\n/g, '<br>');
+            jarvisCuerpo.appendChild(div);
+            jarvisCuerpo.scrollTop = jarvisCuerpo.scrollHeight;
+        }
+
+        function agregarOpciones() {
+            const opciones = [
+                { texto: '¿Qué servicios ofrecen?', accion: 'servicios' },
+                { texto: '¿Dónde están ubicados?', accion: 'ubicacion' },
+                { texto: '¿Cómo puedo contactarlos?', accion: 'contacto' },
+                { texto: 'Hablar con un asesor humano', accion: 'whatsapp' }
+            ];
+            opciones.forEach(op => {
+                const btn = document.createElement('button');
+                btn.className = 'jarvis-opcion';
+                btn.textContent = op.texto;
+                btn.onclick = () => responder(op.accion);
+                jarvisCuerpo.appendChild(btn);
+            });
+            jarvisCuerpo.scrollTop = jarvisCuerpo.scrollHeight;
+        }
+
+        function responder(opcion) {
+            const respuestas = {
+                servicios: 'Ofrecemos 6 servicios principales:\n\n🚀 Soluciones Empresariales\n💡 Consultoría y Estrategia\n🔧 Soporte y Mantenimiento\n✅ Auditorías Operativas\n📊 Análisis de Datos y BI\n🎓 Capacitación\n\n¿Desea más información sobre alguno?',
+                ubicacion: 'Nos encontramos operando desde COLOMBIA 🇨🇴\n\nAtendemos a toda la región con soluciones remotas y presenciales.',
+                contacto: 'Puede comunicarse con nosotros a través de:\n\n📞 +57 317 423 5796\n📧 OPERAICOLOMBIA@GMAIL.COM\n💬 O pulsando el botón de WhatsApp',
+                whatsapp: 'Comunicándole con un asesor humano en línea...\n\n✅ Abriendo WhatsApp...'
+            };
+            agregarMensaje(respuestas[opcion]);
+            if (opcion === 'whatsapp') {
+                setTimeout(() => {
+                    window.open('https://wa.me/573174235796?text=HOLA!%20ME%20GUSTARÍA%20SOLICITAR%20INFORMACIÓN%20SOBRE%20SUS%20SERVICIOS', '_blank');
+                }, 1500);
+            }
+        }
+
+        jarvisBoton.addEventListener('click', () => {
+            jarvisAbierto = !jarvisAbierto;
+            jarvisVentana.classList.toggle('abierta', jarvisAbierto);
+            if (jarvisAbierto && jarvisCuerpo.children.length === 0) {
+                setTimeout(() => {
+                    agregarMensaje('SISTEMA INICIALIZADO... ✅\n\nBienvenido a OPERAI COLOMBIA. Soy su asistente virtual.\n\n¿En qué puedo asistirle hoy?');
+                    agregarOpciones();
+                }, 400);
+            }
+        });
+
+        jarvisCerrar.addEventListener('click', () => {
+            jarvisAbierto = false;
+            jarvisVentana.classList.remove('abierta');
+        });
+
+        // === RESTO DEL SISTEMA ===
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js')
-                    .then((registro) => console.log('✅ App lista:', registro.scope))
-                    .catch((error) => console.log('⚠️ Error:', error));
+                navigator.serviceWorker.register('/sw.js');
             });
         }
         let eventoInstalar;
@@ -333,9 +521,7 @@
             if (!eventoInstalar) return;
             eventoInstalar.prompt();
             const { outcome } = await eventoInstalar.userChoice;
-            if (outcome === 'accepted') {
-                btnInstalar.classList.remove('mostrar');
-            }
+            if (outcome === 'accepted') btnInstalar.classList.remove('mostrar');
             eventoInstalar = null;
         });
         let idiomaActual = 'es';
@@ -363,14 +549,9 @@
         let reproduciendo = false;
         boton.addEventListener('click', function() {
             if (!reproduciendo) {
-                audio.play().then(() => {
-                    boton.textContent = '⏸';
-                    reproduciendo = true;
-                });
+                audio.play().then(() => { boton.textContent = '⏸'; reproduciendo = true; });
             } else {
-                audio.pause();
-                boton.textContent = '▶';
-                reproduciendo = false;
+                audio.pause(); boton.textContent = '▶'; reproduciendo = false;
             }
         });
         const sections = document.querySelectorAll('section');
@@ -383,17 +564,14 @@
         const cursorDot = document.querySelector('.cursor-dot');
         const cursorRing = document.querySelector('.cursor-ring');
         let mouseX = 0, mouseY = 0;
-        document.addEventListener('mousemove', e => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
+        document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
         function animateCursor() {
             cursorDot.style.left = `${mouseX}px`;
             cursorDot.style.top = `${mouseY}px`;
             requestAnimationFrame(animateCursor);
         }
         animateCursor();
-        document.querySelectorAll('a, .service-card, .btn, .btn-musica, .btn-idioma, .btn-whatsapp, .instalar-app').forEach(el => {
+        document.querySelectorAll('a, .service-card, .btn, .btn-musica, .btn-idioma, .btn-whatsapp, .instalar-app, .jarvis-boton').forEach(el => {
             el.addEventListener('mouseenter', () => cursorRing.classList.add('hover'));
             el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
         });
