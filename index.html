@@ -79,67 +79,9 @@
             to   {opacity: 0.7; transform: translateX(-50%) scale(1.1);}
         }
 
-        /* 🏷️ BARRA DESLIZANTE DE TECNOLOGÍAS */
-        .barra-marcas {
-            width: 100%;
-            padding: 3rem 0;
-            overflow: hidden;
-            position: relative;
-            background: linear-gradient(90deg, transparent, rgba(10,8,48,0.8), transparent);
-        }
-        .barra-marcas::before, .barra-marcas::after {
-            content: '';
-            position: absolute;
-            top: 0; bottom: 0;
-            width: 120px;
-            z-index: 2;
-            pointer-events: none;
-        }
-        .barra-marcas::before {
-            left: 0;
-            background: linear-gradient(90deg, #0A0830 0%, transparent 100%);
-        }
-        .barra-marcas::after {
-            right: 0;
-            background: linear-gradient(-90deg, #0A0830 0%, transparent 100%);
-        }
-        .marcas-deslizante {
-            display: flex;
-            gap: 4rem;
-            animation: desplazarMarcas 30s linear infinite;
-            width: max-content;
-        }
-        @keyframes desplazarMarcas {
-            0% {transform: translateX(0);}
-            100% {transform: translateX(-50%);}
-        }
-        .marca-item {
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem 2rem;
-            background: rgba(17,231,219,0.04);
-            border: 1px solid rgba(79,249,243,0.15);
-            border-radius: 12px;
-            white-space: nowrap;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--blanco-suave);
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            min-width: 160px;
-            text-align: center;
-        }
-        .marca-item:hover {
-            border-color: var(--turquesa-brillante);
-            box-shadow: 0 0 20px rgba(79,249,243,0.25);
-            transform: scale(1.05);
-        }
-
         /* 🎬 EFECTOS SCROLL — elementos aparecen suavemente */
         section {
-            padding: 8rem 3rem; max-width: 1400px; margin: 0 auto;
+            padding: 12rem 3rem 8rem; max-width: 1400px; margin: 0 auto;
             opacity: 0; transform: translateY(60px);
             transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -272,7 +214,7 @@
             header {padding: 1rem 1.2rem; padding-right: 1.2rem; flex-direction: column; gap: 1rem;}
             .logo-img {height: 100px;}
             nav a {margin: 0 0.4rem; font-size: 0.8rem;}
-            section {padding: 5rem 1.2rem;}
+            section {padding: 6rem 1.2rem;}
             .hero {padding-top: 13rem;}
             .globo {width: 240px; height: 240px;}
             .reproductor {bottom: 1.2rem; right: 1.2rem;}
@@ -282,9 +224,6 @@
             .instalar-app {left: 1.2rem; bottom: 1.2rem; font-size: 0.75rem; padding: 0.5rem 0.8rem;}
             .jarvis-boton {bottom: 14rem; right: 1.2rem; width: 55px; height: 55px; font-size: 1.3rem;}
             .jarvis-ventana {right: 1.2rem; left: 1.2rem; width: auto;}
-            .barra-marcas {padding: 2rem 0;}
-            .marcas-deslizante {gap: 2rem; animation-duration: 20s;}
-            .marca-item {padding: 0.8rem 1.2rem; font-size: 0.9rem; min-width: 120px;}
             .mapa-contenedor iframe {height: 300px;}
             .cursor-dot, .cursor-ring {display: none;}
             * {cursor: auto;}
@@ -341,8 +280,6 @@
             <a href="#nosotros" class="en">ABOUT US</a>
             <a href="#servicios" class="es">SERVICIOS</a>
             <a href="#servicios" class="en">SERVICES</a>
-            <a href="#tecnologias" class="es">TECNOLOGÍAS</a>
-            <a href="#tecnologias" class="en">TECHNOLOGIES</a>
             <a href="#contacto" class="es">CONTACTO</a>
             <a href="#contacto" class="en">CONTACT</a>
         </nav>
@@ -361,42 +298,6 @@
             <div class="globo"></div>
         </div>
     </section>
-
-    <!-- 🏷️ SECCIÓN TECNOLOGÍAS CON BARRA DESLIZANTE -->
-    <section id="tecnologias" style="padding-top: 4rem; padding-bottom: 4rem;">
-        <h2 class="es" style="text-align: center; display: block; margin-bottom: 0;">TECNOLOGÍAS QUE MANEJAMOS</h2>
-        <h2 class="en" style="text-align: center; display: block; margin-bottom: 0;">TECHNOLOGIES WE WORK WITH</h2>
-    </section>
-    <div class="barra-marcas">
-        <div class="marcas-deslizante">
-            <!-- PRIMERA COPIA -->
-            <div class="marca-item">Google</div>
-            <div class="marca-item">Microsoft</div>
-            <div class="marca-item">Excel</div>
-            <div class="marca-item">Power BI</div>
-            <div class="marca-item">Windows</div>
-            <div class="marca-item">Siesa</div>
-            <div class="marca-item">Google Workspace</div>
-            <div class="marca-item">Help Desk</div>
-            <div class="marca-item">Alhua</div>
-            <div class="marca-item">Gemini</div>
-            <div class="marca-item">Dola</div>
-            <div class="marca-item">ChatGPT</div>
-            <!-- SEGUNDA COPIA (para movimiento infinito) -->
-            <div class="marca-item">Google</div>
-            <div class="marca-item">Microsoft</div>
-            <div class="marca-item">Excel</div>
-            <div class="marca-item">Power BI</div>
-            <div class="marca-item">Windows</div>
-            <div class="marca-item">Siesa</div>
-            <div class="marca-item">Google Workspace</div>
-            <div class="marca-item">Help Desk</div>
-            <div class="marca-item">Alhua</div>
-            <div class="marca-item">Gemini</div>
-            <div class="marca-item">Dola</div>
-            <div class="marca-item">ChatGPT</div>
-        </div>
-    </div>
 
     <section id="nosotros">
         <h2 class="es">¿QUIÉNES SOMOS?</h2>
@@ -505,7 +406,7 @@
 
         document.querySelectorAll('section').forEach(sec => {
             observadorSecciones.observe(sec);
-            sec.classList.add('visible');
+            sec.classList.add('visible'); // la primera siempre visible
         });
 
         // Tarjetas de servicios aparecen escalonadas
@@ -570,7 +471,6 @@
             const opciones = [
                 { texto: '¿Qué servicios ofrecen?', accion: 'servicios' },
                 { texto: '¿Dónde están ubicados?', accion: 'ubicacion' },
-                { texto: '¿Qué tecnologías manejan?', accion: 'tecnologias' },
                 { texto: '¿Cómo puedo contactarlos?', accion: 'contacto' },
                 { texto: 'Hablar con un asesor humano', accion: 'whatsapp' }
             ];
@@ -588,7 +488,6 @@
             const respuestas = {
                 servicios: 'Ofrecemos seis servicios principales: Soluciones Empresariales, Consultoría y Estrategia, Soporte y Mantenimiento, Auditorías Operativas, Análisis de Datos e Inteligencia Comercial, y Capacitación. ¿Desea más información sobre alguno?',
                 ubicacion: 'Operamos desde Colombia. Encontrará nuestra ubicación en el mapa al final de esta página.',
-                tecnologias: 'Manejamos tecnologías como: Google, Microsoft, Excel, Power BI, Windows, Siesa, Google Workspace, Help Desk, Alhua, Gemini, Dola y ChatGPT. Estamos constantemente actualizándonos.',
                 contacto: 'Puede comunicarse con nosotros al teléfono: +57 317 423 5796, al correo: operaicolombia@gmail.com, o pulsando el botón de WhatsApp.',
                 whatsapp: 'Comunicándole con un asesor humano en línea... Abriendo WhatsApp...'
             };
@@ -600,4 +499,98 @@
             }
         }
 
-        jarvisBoton.addEventListener('click', ()
+        jarvisBoton.addEventListener('click', () => {
+            jarvisAbierto = !jarvisAbierto;
+            jarvisVentana.classList.toggle('abierta', jarvisAbierto);
+            if (jarvisAbierto && jarvisCuerpo.children.length === 0) {
+                setTimeout(() => {
+                    agregarMensaje('SISTEMA INICIALIZADO. Bienvenido a Ó-pera-i Colombia. Soy su asistente virtual. ¿En qué puedo ayudarle hoy?');
+                    agregarOpciones();
+                }, 500);
+            }
+        });
+
+        jarvisCerrar.addEventListener('click', () => {
+            jarvisAbierto = false;
+            jarvisVentana.classList.remove('abierta');
+            window.speechSynthesis.cancel();
+        });
+
+        // RESTO DEL SISTEMA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js');
+            });
+        }
+
+        let eventoInstalar;
+        const btnInstalar = document.getElementById('btnInstalar');
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            eventoInstalar = e;
+            btnInstalar.classList.add('mostrar');
+        });
+        btnInstalar.addEventListener('click', async () => {
+            if (!eventoInstalar) return;
+            eventoInstalar.prompt();
+            const { outcome } = await eventoInstalar.userChoice;
+            if (outcome === 'accepted') btnInstalar.classList.remove('mostrar');
+            eventoInstalar = null;
+        });
+
+        let idiomaActual = 'es';
+        const btnIdioma = document.getElementById('btnIdioma');
+        function cambiarIdioma() {
+            const textosES = document.querySelectorAll('.es');
+            const textosEN = document.querySelectorAll('.en');
+            if (idiomaActual === 'es') {
+                textosES.forEach(el => el.style.display = 'none');
+                textosEN.forEach(el => el.style.display = 'block');
+                idiomaActual = 'en';
+                btnIdioma.textContent = '🌐 ES';
+                document.documentElement.lang = 'en';
+            } else {
+                textosES.forEach(el => el.style.display = 'block');
+                textosEN.forEach(el => el.style.display = 'none');
+                idiomaActual = 'es';
+                btnIdioma.textContent = '🌐 EN';
+                document.documentElement.lang = 'es';
+            }
+        }
+        btnIdioma.addEventListener('click', cambiarIdioma);
+
+        const audio = document.getElementById('musica');
+        const boton = document.getElementById('botonMusica');
+        let reproduciendo = false;
+        boton.addEventListener('click', function() {
+            if (!reproduciendo) {
+                audio.play().then(() => {
+                    boton.textContent = '⏸';
+                    reproduciendo = true;
+                });
+            } else {
+                audio.pause();
+                boton.textContent = '▶';
+                reproduciendo = false;
+            }
+        });
+
+        const puntero = document.querySelector('.cursor-dot');
+        const anillo = document.querySelector('.cursor-ring');
+        let ratonX = 0, ratonY = 0;
+        document.addEventListener('mousemove', e => {
+            ratonX = e.clientX;
+            ratonY = e.clientY;
+            puntero.style.left = ratonX + 'px';
+            puntero.style.top = ratonY + 'px';
+            anillo.style.left = ratonX + 'px';
+            anillo.style.top = ratonY + 'px';
+        });
+
+        document.querySelectorAll('a, .service-card, .btn, .btn-musica, .btn-idioma, .btn-whatsapp, .instalar-app, .jarvis-boton, .jarvis-opcion').forEach(el => {
+            el.addEventListener('mouseenter', () => anillo.classList.add('hover'));
+            el.addEventListener('mouseleave', () => anillo.classList.remove('hover'));
+        });
+    </script>
+</body>
+</html>
