@@ -35,8 +35,6 @@
             overflow-x: hidden;
             position: relative;
         }
-
-        /* 🤖 FONDO ANIMADO ESTILO JARVIS */
         .jarvis-fondo {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1; overflow: hidden;
@@ -45,8 +43,7 @@
         }
         .jarvis-lineas {
             position: absolute; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(rgba(0,204,255,0.06) 1px, transparent 1px),
+            background-image: linear-gradient(rgba(0,204,255,0.06) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0,204,255,0.06) 1px, transparent 1px);
             background-size: 60px 60px;
             animation: desplazarLineas 20s linear infinite;
@@ -55,9 +52,7 @@
             0% {transform: translate(0,0);}
             100% {transform: translate(60px,60px);}
         }
-        .jarvis-puntos {
-            position: absolute; width: 100%; height: 100%;
-        }
+        .jarvis-puntos {position: absolute; width: 100%; height: 100%;}
         .punto {
             position: absolute; width: 3px; height: 3px;
             background: var(--azul-brillo); border-radius: 50%;
@@ -78,15 +73,46 @@
             from {opacity: 0.3; transform: translateX(-50%) scale(1);}
             to   {opacity: 0.7; transform: translateX(-50%) scale(1.1);}
         }
-
-        /* 🎬 EFECTOS SCROLL — elementos aparecen suavemente */
+        .barra-marcas {
+            width: 100%; padding: 3rem 0; overflow: hidden; position: relative;
+            background: linear-gradient(90deg, transparent, rgba(10,8,48,0.8), transparent);
+        }
+        .barra-marcas::before, .barra-marcas::after {
+            content: ''; position: absolute; top: 0; bottom: 0; width: 120px;
+            z-index: 2; pointer-events: none;
+        }
+        .barra-marcas::before {left: 0; background: linear-gradient(90deg, #0A0830 0%, transparent 100%);}
+        .barra-marcas::after {right: 0; background: linear-gradient(-90deg, #0A0830 0%, transparent 100%);}
+        .marcas-deslizante {
+            display: flex; align-items: center; gap: 3.5rem;
+            animation: desplazarMarcas 35s linear infinite; width: max-content;
+        }
+        @keyframes desplazarMarcas {
+            0% {transform: translateX(0);}
+            100% {transform: translateX(-50%);}
+        }
+        .marca-item {
+            flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+            padding: 1.2rem 1.8rem; background: rgba(17,231,219,0.04);
+            border: 1px solid rgba(79,249,243,0.15); border-radius: 14px;
+            transition: all 0.3s ease; height: 110px; min-width: 160px;
+        }
+        .marca-item img {
+            height: 70px; width: auto; max-width: 140px; object-fit: contain;
+            filter: brightness(1.1) contrast(1.05); transition: all 0.3s ease;
+        }
+        .marca-item:hover {
+            border-color: var(--turquesa-brillante);
+            box-shadow: 0 0 25px rgba(79,249,243,0.25);
+            transform: scale(1.08); background: rgba(79,249,243,0.06);
+        }
+        .marca-item:hover img {filter: brightness(1.3) contrast(1.1);}
         section {
-            padding: 12rem 3rem 8rem; max-width: 1400px; margin: 0 auto;
+            padding: 8rem 3rem; max-width: 1400px; margin: 0 auto;
             opacity: 0; transform: translateY(60px);
             transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
         section.visible {opacity: 1; transform: translateY(0);}
-
         .audio-oculto {display: none;}
         .reproductor {position: fixed; bottom: 2rem; right: 2rem; z-index: 100;}
         .btn-musica {
@@ -127,7 +153,6 @@
         }
         .instalar-app.mostrar {display: block;}
         .instalar-app:hover {transform: scale(1.05); box-shadow: 0 0 30px rgba(79,249,243,0.5);}
-        /* ASISTENTE JARVIS */
         .jarvis-boton {
             position: fixed; bottom: 14rem; right: 2rem;
             width: 65px; height: 65px; border-radius: 50%;
@@ -136,8 +161,7 @@
             color: var(--azul-jarvis); font-size: 1.6rem; font-weight: bold;
             display: flex; align-items: center; justify-content: center;
             cursor: pointer; z-index: 102;
-            box-shadow: 0 0 15px rgba(0,204,255,0.4),
-                        inset 0 0 10px rgba(0,204,255,0.15);
+            box-shadow: 0 0 15px rgba(0,204,255,0.4), inset 0 0 10px rgba(0,204,255,0.15);
             transition: all 0.4s ease;
             animation: pulso-jarvis 2s infinite alternate;
         }
@@ -150,8 +174,7 @@
             position: fixed; bottom: 14rem; right: 6rem;
             width: 360px; max-width: calc(100vw - 2rem);
             background: linear-gradient(135deg, rgba(0,17,51,0.96), rgba(0,34,85,0.94));
-            border: 1px solid var(--azul-jarvis);
-            border-radius: 16px;
+            border: 1px solid var(--azul-jarvis); border-radius: 16px;
             box-shadow: 0 0 30px rgba(0,204,255,0.35), inset 0 1px 0 rgba(0,204,255,0.15);
             backdrop-filter: blur(12px); z-index: 103;
             transform: translateY(20px) scale(0.95); opacity: 0; pointer-events: none;
@@ -201,10 +224,9 @@
         .service-card h3 {font-size: 1.3rem; margin-bottom: 1.2rem; color: var(--turquesa-brillante); font-weight: 700; text-shadow: 0 0 10px rgba(79,249,243,0.4);}
         .service-card p {color: var(--blanco-suave); line-height: 1.8; font-weight: 500;}
         .contact-section p {font-size: 1.3rem; margin: 0.8rem 0; color: var(--blanco-suave); font-weight: 500;}
-        /* 🗺️ GOOGLE MAPS INTEGRADO */
         .mapa-contenedor {margin-top: 2.5rem; border-radius: 20px; overflow: hidden; border: 3px solid rgba(79,249,243,0.3); box-shadow: 0 0 30px rgba(17,231,219,0.2);}
         .mapa-contenedor iframe {width: 100%; height: 400px; border: none;}
-        footer {padding: 3.5rem; border-top: 1px solid rgba(79,249,243,0.2); text-align: center; color: rgba(232,255,253,0.6); font-size: 0.95rem; margin-top: 3rem;}
+        footer {padding: 3.5rem 2rem; border-top: 1px solid rgba(79,249,243,0.2); text-align: center; color: rgba(232,255,253,0.6); font-size: 0.95rem; margin-top: 0;}
         .en {display: none;}
         @media (max-width: 1024px) {
             .hero {flex-direction: column; text-align: center;}
@@ -214,7 +236,7 @@
             header {padding: 1rem 1.2rem; padding-right: 1.2rem; flex-direction: column; gap: 1rem;}
             .logo-img {height: 100px;}
             nav a {margin: 0 0.4rem; font-size: 0.8rem;}
-            section {padding: 6rem 1.2rem;}
+            section {padding: 5rem 1.2rem;}
             .hero {padding-top: 13rem;}
             .globo {width: 240px; height: 240px;}
             .reproductor {bottom: 1.2rem; right: 1.2rem;}
@@ -224,6 +246,10 @@
             .instalar-app {left: 1.2rem; bottom: 1.2rem; font-size: 0.75rem; padding: 0.5rem 0.8rem;}
             .jarvis-boton {bottom: 14rem; right: 1.2rem; width: 55px; height: 55px; font-size: 1.3rem;}
             .jarvis-ventana {right: 1.2rem; left: 1.2rem; width: auto;}
+            .barra-marcas {padding: 2rem 0;}
+            .marcas-deslizante {gap: 2rem; animation-duration: 25s;}
+            .marca-item {padding: 1rem 1.2rem; height: 90px; min-width: 130px;}
+            .marca-item img {height: 50px; max-width: 110px;}
             .mapa-contenedor iframe {height: 300px;}
             .cursor-dot, .cursor-ring {display: none;}
             * {cursor: auto;}
@@ -232,14 +258,12 @@
 </head>
 <body>
 
-    <!-- 🤖 FONDO ANIMADO ESTILO JARVIS -->
     <div class="jarvis-fondo">
         <div class="jarvis-lineas"></div>
         <div class="jarvis-puntos" id="puntosJarvis"></div>
         <div class="jarvis-ondas"></div>
     </div>
 
-    <!-- ASISTENTE JARVIS -->
     <button class="jarvis-boton" id="jarvisBoton">J</button>
     <div class="jarvis-ventana" id="jarvisVentana">
         <div class="jarvis-cabecera">
@@ -284,8 +308,7 @@
             <a href="#contacto" class="en">CONTACT</a>
         </nav>
     </header>
-
-    <section class="hero" id="inicio">
+ <section class="hero" id="inicio">
         <div class="hero-texto">
             <h1 class="es">OPERAI<br>COLOMBIA</h1>
             <h1 class="en">OPERAI<br>COLOMBIA</h1>
@@ -306,13 +329,13 @@
             SOMOS UNA EMPRESA COMPROMETIDA CON OFRECER SOLUCIONES INTEGRALES EN COLOMBIA.
             NUESTRA EXPERIENCIA DE MÁS DE 22 AÑOS EN EL SECTOR Y DEDICACIÓN NOS PERMITEN BRINDAR UN SERVICIO DE CALIDAD,
             ADAPTADO A LAS NECESIDADES REALES DE NUESTROS CLIENTES. TRABAJAMOS CON
-            COMPROMISO, TRANSPARENCIA Y EXCELENCIA EN CADA PROYECTO QUE EMPRENDEMOS.
+            COMPROMISO, TRANSPARENCIA Y EXCELENCIA EN CADA PROYECTO.
         </p>
         <p class="about-text en">
             WE ARE A COMPANY COMMITTED TO OFFERING COMPREHENSIVE SOLUTIONS IN COLOMBIA.
             OUR EXPERIENCE OF MORE THAN 22 YEARS IN THE SECTOR AND DEDICATION ALLOW US TO PROVIDE QUALITY SERVICES,
             ADAPTED TO THE REAL NEEDS OF OUR CLIENTS. WE WORK WITH
-            COMMITMENT, TRANSPARENCY AND EXCELLENCE IN EVERY PROJECT WE UNDERTAKE.
+            COMMITMENT, TRANSPARENCY AND EXCELLENCE IN EVERY PROJECT.
         </p>
     </section>
 
@@ -366,23 +389,49 @@
         <p class="en">📍 COLOMBIA</p>
         <p>📞 +57 317 423 5796</p>
         <p>📧 operaicolombia@gmail.com</p>
-
-        <!-- 🗺️ GOOGLE MAPS INTEGRADO -->
         <div class="mapa-contenedor">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126916.74051660485!2d-74.14556619726563!3d4.658462200000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9bfd5689d4c7%3A0x8c7b8f0b5c4e7d5a!2sBogot%C3%A1%2C%20Colombia!5e0!3m2!1ses!2sco!4v1693780000000!5m2!1ses!2sco" 
-                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126916.74051660485!2d-74.14556619726563!3d4.658462200000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9bfd5689d4c7%3A0x8c7b8f0b5c4e7d5a!2sBogot%C3%A1%2C%20Colombia!5e0!3m2!1ses!2sco!4v1693780000000!5m2!1ses!2sco" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </section>
+
+    <section id="tecnologias" style="padding: 4rem 0; margin: 0;">
+        <h2 class="es" style="text-align: center; display: block; margin-bottom: 2rem; padding: 0 3rem;">TECNOLOGÍAS QUE MANEJAMOS</h2>
+        <h2 class="en" style="text-align: center; display: block; margin-bottom: 2rem; padding: 0 3rem;">TECHNOLOGIES WE WORK WITH</h2>
+    </section>
+    <div class="barra-marcas">
+        <div class="marcas-deslizante">
+            <div class="marca-item"><img src="google.png" alt="Google" loading="lazy"></div>
+            <div class="marca-item"><img src="microsoft.png" alt="Microsoft" loading="lazy"></div>
+            <div class="marca-item"><img src="excel.jpeg" alt="Excel" loading="lazy"></div>
+            <div class="marca-item"><img src="powerbi.png" alt="Power BI" loading="lazy"></div>
+            <div class="marca-item"><img src="windows.jpeg" alt="Windows" loading="lazy"></div>
+            <div class="marca-item"><img src="siesa.jpeg" alt="Siesa" loading="lazy"></div>
+            <div class="marca-item"><img src="workspace.png" alt="Google Workspace" loading="lazy"></div>
+            <div class="marca-item"><img src="helpdesk.png" alt="Help Desk" loading="lazy"></div>
+            <div class="marca-item"><img src="alhua.png" alt="Alhua" loading="lazy"></div>
+            <div class="marca-item"><img src="gemini.jpeg" alt="Gemini" loading="lazy"></div>
+            <div class="marca-item"><img src="dola.png" alt="Dola" loading="lazy"></div>
+            <div class="marca-item"><img src="chatgpt.jpeg" alt="ChatGPT" loading="lazy"></div>
+            <div class="marca-item"><img src="google.png" alt="Google" loading="lazy"></div>
+            <div class="marca-item"><img src="microsoft.png" alt="Microsoft" loading="lazy"></div>
+            <div class="marca-item"><img src="excel.jpeg" alt="Excel" loading="lazy"></div>
+            <div class="marca-item"><img src="powerbi.png" alt="Power BI" loading="lazy"></div>
+            <div class="marca-item"><img src="windows.jpeg" alt="Windows" loading="lazy"></div>
+            <div class="marca-item"><img src="siesa.jpeg" alt="Siesa" loading="lazy"></div>
+            <div class="marca-item"><img src="workspace.png" alt="Google Workspace" loading="lazy"></div>
+            <div class="marca-item"><img src="helpdesk.png" alt="Help Desk" loading="lazy"></div>
+            <div class="marca-item"><img src="alhua.png" alt="Alhua" loading="lazy"></div>
+            <div class="marca-item"><img src="gemini.jpeg" alt="Gemini" loading="lazy"></div>
+            <div class="marca-item"><img src="dola.png" alt="Dola" loading="lazy"></div>
+            <div class="marca-item"><img src="chatgpt.jpeg" alt="ChatGPT" loading="lazy"></div>
+        </div>
+    </div>
 
     <footer>
         <p class="es">&copy; 2026 OPERAI COLOMBIA. TODOS LOS DERECHOS RESERVADOS.</p>
         <p class="en">&copy; 2026 OPERAI COLOMBIA. ALL RIGHTS RESERVED.</p>
     </footer>
-
     <script>
-        // 🤖 GENERAR PUNTOS DEL FONDO JARVIS
         const contenedorPuntos = document.getElementById('puntosJarvis');
         for (let i = 0; i < 60; i++) {
             const punto = document.createElement('div');
@@ -395,118 +444,118 @@
             contenedorPuntos.appendChild(punto);
         }
 
-        // 🎬 EFECTOS SCROLL — elementos aparecen al bajar
         const observadorSecciones = new IntersectionObserver((entradas) => {
             entradas.forEach(entrada => {
-                if (entrada.isIntersecting) {
-                    entrada.target.classList.add('visible');
-                }
+                if (entrada.isIntersecting) entrada.target.classList.add('visible');
             });
         }, { threshold: 0.15 });
-
         document.querySelectorAll('section').forEach(sec => {
             observadorSecciones.observe(sec);
-            sec.classList.add('visible'); // la primera siempre visible
+            sec.classList.add('visible');
         });
 
-        // Tarjetas de servicios aparecen escalonadas
         const observadorTarjetas = new IntersectionObserver((entradas) => {
             entradas.forEach((entrada, idx) => {
                 if (entrada.isIntersecting) {
-                    setTimeout(() => {
-                        entrada.target.classList.add('visible');
-                    }, idx * 150);
+                    setTimeout(() => entrada.target.classList.add('visible'), idx * 150);
                 }
             });
         }, { threshold: 0.15 });
-
         document.querySelectorAll('.service-card').forEach(tarjeta => {
             observadorTarjetas.observe(tarjeta);
         });
 
-        // 🤖 ASISTENTE JARVIS — VOZ COLOMBIANA 🇨🇴
+        const musica = document.getElementById('musica');
+        const botonMusica = document.getElementById('botonMusica');
+        let reproduciendo = false;
+        function intentarReproducir() {
+            musica.play().then(() => { reproduciendo = true; botonMusica.textContent = '⏸'; })
+                .catch(() => { reproduciendo = false; botonMusica.textContent = '▶'; });
+        }
+        window.addEventListener('load', () => setTimeout(intentarReproducir, 800));
+        botonMusica.addEventListener('click', () => {
+            reproduciendo ? (musica.pause(), botonMusica.textContent = '▶') : (musica.play(), botonMusica.textContent = '⏸');
+            reproduciendo = !reproduciendo;
+        });
+
+        const btnIdioma = document.getElementById('btnIdioma');
+        let esEspanol = true;
+        btnIdioma.addEventListener('click', () => {
+            esEspanol = !esEspanol;
+            document.querySelectorAll('.es').forEach(el => el.style.display = esEspanol ? 'inline' : 'none');
+            document.querySelectorAll('.en').forEach(el => el.style.display = esEspanol ? 'none' : 'inline');
+            btnIdioma.textContent = esEspanol ? '🌐 EN' : '🌐 ES';
+        });
+
         const jarvisBoton = document.getElementById('jarvisBoton');
         const jarvisVentana = document.getElementById('jarvisVentana');
         const jarvisCerrar = document.getElementById('jarvisCerrar');
         const jarvisCuerpo = document.getElementById('jarvisCuerpo');
-        let jarvisAbierto = false;
-        let vozActiva = true;
+        let jarvisAbierto = false, vozActiva = true;
 
         function hablar(texto) {
             if (!vozActiva) return;
-            const corregido = texto
-                .replace(/OPERAI/g, 'Ó-pera-i')
-                .replace(/OPERAI COLOMBIA/g, 'Ó-pera-i Colombia');
+            const corregido = texto.replace(/OPERAI/g, 'Ó-pera-i').replace(/OPERAI COLOMBIA/g, 'Ó-pera-i Colombia');
             const limpio = corregido.replace(/[#📊🚀💡🔧✅🎓📍📞📧]/g, ' ').replace(/\n/g, '. ');
             const mensaje = new SpeechSynthesisUtterance(limpio);
             mensaje.lang = 'es-CO';
             mensaje.rate = 0.95;
             mensaje.pitch = 0.9;
             mensaje.volume = 1;
-
             const voces = window.speechSynthesis.getVoices();
-            let vozPref = null;
-            vozPref = voces.find(v => v.lang === 'es-CO' || v.lang.startsWith('es-CO') || v.name.includes('Colombia'));
-            if (!vozPref) vozPref = voces.find(v => v.lang === 'es-MX' || v.lang === 'es-AR' || v.lang.startsWith('es-') && !v.lang.includes('ES'));
-            if (!vozPref) vozPref = voces.find(v => v.lang.startsWith('es-'));
-            if (!vozPref && voces.length > 0) vozPref = voces[0];
-            if (vozPref) mensaje.voice = vozPref;
+            const vozColombiana = voces.find(v => v.lang === 'es-CO' || v.lang.startsWith('es-'));
+            if (vozColombiana) mensaje.voice = vozColombiana;
             window.speechSynthesis.speak(mensaje);
-        }
-
-        if (window.speechSynthesis) {
-            window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
         }
 
         function agregarMensaje(texto) {
             const div = document.createElement('div');
             div.className = 'jarvis-mensaje';
-            div.innerHTML = texto.replace(/\n/g, '<br>');
+            div.textContent = texto;
             jarvisCuerpo.appendChild(div);
             jarvisCuerpo.scrollTop = jarvisCuerpo.scrollHeight;
-            hablar(texto);
         }
 
-        function agregarOpciones() {
-            const opciones = [
-                { texto: '¿Qué servicios ofrecen?', accion: 'servicios' },
-                { texto: '¿Dónde están ubicados?', accion: 'ubicacion' },
-                { texto: '¿Cómo puedo contactarlos?', accion: 'contacto' },
-                { texto: 'Hablar con un asesor humano', accion: 'whatsapp' }
-            ];
-            opciones.forEach(op => {
-                const btn = document.createElement('button');
-                btn.className = 'jarvis-opcion';
-                btn.textContent = op.texto;
-                btn.onclick = () => responder(op.accion);
-                jarvisCuerpo.appendChild(btn);
+        function agregarOpcion(texto, accion) {
+            const btn = document.createElement('button');
+            btn.className = 'jarvis-opcion';
+            btn.textContent = texto;
+            btn.onclick = accion;
+            jarvisCuerpo.appendChild(btn);
+        }
+
+        function inicializarJarvis() {
+            jarvisCuerpo.innerHTML = '';
+            agregarMensaje('¡Hola! Soy el asistente de OPERAI COLOMBIA. ¿En qué puedo ayudarle hoy?');
+            hablar('¡Hola! Soy el asistente de Ó-pera-i Colombia. ¿En qué puedo ayudarle hoy?');
+            agregarOpcion('📋 Conocer nuestros servicios', () => {
+                agregarMensaje('Ofrecemos: Soluciones Empresariales, Consultoría, Soporte y Mantenimiento, Acompañamiento y Auditorías, Análisis de Datos con BI, y Capacitación.');
+                hablar('Ofrecemos Soluciones Empresariales, Consultoría, Soporte y Mantenimiento, Acompañamiento y Auditorías, Análisis de Datos con Inteligencia Comercial, y Capacitación.');
             });
-            jarvisCuerpo.scrollTop = jarvisCuerpo.scrollHeight;
-        }
-
-        function responder(opcion) {
-            const respuestas = {
-                servicios: 'Ofrecemos seis servicios principales: Soluciones Empresariales, Consultoría y Estrategia, Soporte y Mantenimiento, Auditorías Operativas, Análisis de Datos e Inteligencia Comercial, y Capacitación. ¿Desea más información sobre alguno?',
-                ubicacion: 'Operamos desde Colombia. Encontrará nuestra ubicación en el mapa al final de esta página.',
-                contacto: 'Puede comunicarse con nosotros al teléfono: +57 317 423 5796, al correo: operaicolombia@gmail.com, o pulsando el botón de WhatsApp.',
-                whatsapp: 'Comunicándole con un asesor humano en línea... Abriendo WhatsApp...'
-            };
-            agregarMensaje(respuestas[opcion]);
-            if (opcion === 'whatsapp') {
-                setTimeout(() => {
-                    window.open('https://wa.me/573174235796?text=HOLA!%20ME%20GUSTARÍA%20SOLICITAR%20INFORMACIÓN%20SOBRE%20SUS%20SERVICIOS', '_blank');
-                }, 2000);
-            }
+            agregarOpcion('📍 Ubicación y contacto', () => {
+                agregarMensaje('Estamos en Colombia. Teléfono: +57 317 423 5796. Correo: operaicolombia@gmail.com');
+                hablar('Estamos en Colombia. Teléfono: más cinco siete, tres uno siete,cuatro dos tres, cinco siete nueve seis. Correo: operaicolombia@gmail.com');
+            });
+            agregarOpcion('🔊 Activar / Desactivar voz', () => {
+                vozActiva = !vozActiva;
+                agregarMensaje(vozActiva ? '✅ Voz activada. Jarvis hablará.' : '🔇 Voz desactivada. Jarvis estará en silencio.');
+            });
+            agregarOpcion('❓ Qué es OPERAI', () => {
+                agregarMensaje('OPERAI COLOMBIA es su aliado tecnológico. Brindamos soluciones en soporte, consultoría, análisis de datos y capacitación para empresas en Colombia.');
+                hablar('Ó-pera-i Colombia es su aliado tecnológico. Brindamos soluciones en soporte, consultoría, análisis de datos y capacitación para empresas en Colombia.');
+            });
         }
 
         jarvisBoton.addEventListener('click', () => {
             jarvisAbierto = !jarvisAbierto;
-            jarvisVentana.classList.toggle('abierta', jarvisAbierto);
-            if (jarvisAbierto && jarvisCuerpo.children.length === 0) {
-                setTimeout(() => {
-                    agregarMensaje('SISTEMA INICIALIZADO. Bienvenido a Ó-pera-i Colombia. Soy su asistente virtual. ¿En qué puedo ayudarle hoy?');
-                    agregarOpciones();
-                }, 500);
+            if (jarvisAbierto) {
+                jarvisVentana.classList.add('abierta');
+                if (jarvisCuerpo.children.length === 0) {
+                    inicializarJarvis();
+                }
+            } else {
+                jarvisVentana.classList.remove('abierta');
+                window.speechSynthesis.cancel();
             }
         });
 
@@ -516,81 +565,27 @@
             window.speechSynthesis.cancel();
         });
 
-        // RESTO DEL SISTEMA
+        const cursorPunto = document.querySelector('.cursor-dot');
+        const cursorAnillo = document.querySelector('.cursor-ring');
+        document.addEventListener('mousemove', (e) => {
+            cursorPunto.style.left = e.pageX + 'px';
+            cursorPunto.style.top = e.pageY + 'px';
+            setTimeout(() => {
+                cursorAnillo.style.left = e.pageX + 'px';
+                cursorAnillo.style.top = e.pageY + 'px';
+            }, 80);
+        });
+        document.addEventListener('mousedown', () => cursorAnillo.classList.add('hover'));
+        document.addEventListener('mouseup', () => cursorAnillo.classList.remove('hover'));
+
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js');
+                navigator.serviceWorker.register('sw.js')
+                    .then(() => console.log('✅ App instalable registrada'))
+                    .catch(() => console.log('⚠️ Sin servicio de App'));
             });
         }
-
-        let eventoInstalar;
-        const btnInstalar = document.getElementById('btnInstalar');
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            eventoInstalar = e;
-            btnInstalar.classList.add('mostrar');
-        });
-        btnInstalar.addEventListener('click', async () => {
-            if (!eventoInstalar) return;
-            eventoInstalar.prompt();
-            const { outcome } = await eventoInstalar.userChoice;
-            if (outcome === 'accepted') btnInstalar.classList.remove('mostrar');
-            eventoInstalar = null;
-        });
-
-        let idiomaActual = 'es';
-        const btnIdioma = document.getElementById('btnIdioma');
-        function cambiarIdioma() {
-            const textosES = document.querySelectorAll('.es');
-            const textosEN = document.querySelectorAll('.en');
-            if (idiomaActual === 'es') {
-                textosES.forEach(el => el.style.display = 'none');
-                textosEN.forEach(el => el.style.display = 'block');
-                idiomaActual = 'en';
-                btnIdioma.textContent = '🌐 ES';
-                document.documentElement.lang = 'en';
-            } else {
-                textosES.forEach(el => el.style.display = 'block');
-                textosEN.forEach(el => el.style.display = 'none');
-                idiomaActual = 'es';
-                btnIdioma.textContent = '🌐 EN';
-                document.documentElement.lang = 'es';
-            }
-        }
-        btnIdioma.addEventListener('click', cambiarIdioma);
-
-        const audio = document.getElementById('musica');
-        const boton = document.getElementById('botonMusica');
-        let reproduciendo = false;
-        boton.addEventListener('click', function() {
-            if (!reproduciendo) {
-                audio.play().then(() => {
-                    boton.textContent = '⏸';
-                    reproduciendo = true;
-                });
-            } else {
-                audio.pause();
-                boton.textContent = '▶';
-                reproduciendo = false;
-            }
-        });
-
-        const puntero = document.querySelector('.cursor-dot');
-        const anillo = document.querySelector('.cursor-ring');
-        let ratonX = 0, ratonY = 0;
-        document.addEventListener('mousemove', e => {
-            ratonX = e.clientX;
-            ratonY = e.clientY;
-            puntero.style.left = ratonX + 'px';
-            puntero.style.top = ratonY + 'px';
-            anillo.style.left = ratonX + 'px';
-            anillo.style.top = ratonY + 'px';
-        });
-
-        document.querySelectorAll('a, .service-card, .btn, .btn-musica, .btn-idioma, .btn-whatsapp, .instalar-app, .jarvis-boton, .jarvis-opcion').forEach(el => {
-            el.addEventListener('mouseenter', () => anillo.classList.add('hover'));
-            el.addEventListener('mouseleave', () => anillo.classList.remove('hover'));
-        });
     </script>
 </body>
 </html>
+                       
