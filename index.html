@@ -257,13 +257,11 @@
     </style>
 </head>
 <body>
-
     <div class="jarvis-fondo">
         <div class="jarvis-lineas"></div>
         <div class="jarvis-puntos" id="puntosJarvis"></div>
         <div class="jarvis-ondas"></div>
     </div>
-
     <button class="jarvis-boton" id="jarvisBoton">J</button>
     <div class="jarvis-ventana" id="jarvisVentana">
         <div class="jarvis-cabecera">
@@ -278,14 +276,11 @@
         </div>
         <div class="jarvis-cuerpo" id="jarvisCuerpo"></div>
     </div>
-
     <button class="instalar-app" id="btnInstalar">📲 INSTALAR APP</button>
     <button class="btn-idioma" id="btnIdioma">🌐 EN</button>
     <a href="https://wa.me/573174235796?text=HOLA!%20ME%20GUSTARÍA%20SOLICITAR%20INFORMACIÓN%20SOBRE%20SUS%20SERVICIOS" target="_blank" class="btn-whatsapp">💬</a>
-
     <div class="cursor-dot"></div>
     <div class="cursor-ring"></div>
-
     <div class="audio-oculto">
         <audio id="musica" src="fortunateSon.mp3" loop>
             Su navegador no soporta audio.
@@ -294,7 +289,6 @@
     <div class="reproductor">
         <button class="btn-musica" id="botonMusica">▶</button>
     </div>
-
     <header>
         <img src="OPERAICOL.jpeg" alt="OPERAI COLOMBIA" class="logo-img">
         <nav>
@@ -308,7 +302,7 @@
             <a href="#contacto" class="en">CONTACT</a>
         </nav>
     </header>
- <section class="hero" id="inicio">
+    <section class="hero" id="inicio">
         <div class="hero-texto">
             <h1 class="es">OPERAI<br>COLOMBIA</h1>
             <h1 class="en">OPERAI<br>COLOMBIA</h1>
@@ -321,7 +315,6 @@
             <div class="globo"></div>
         </div>
     </section>
-
     <section id="nosotros">
         <h2 class="es">¿QUIÉNES SOMOS?</h2>
         <h2 class="en">WHO ARE WE?</h2>
@@ -338,7 +331,6 @@
             COMMITMENT, TRANSPARENCY AND EXCELLENCE IN EVERY PROJECT.
         </p>
     </section>
-
     <section id="servicios">
         <h2 class="es">NUESTROS SERVICIOS</h2>
         <h2 class="en">OUR SERVICES</h2>
@@ -381,7 +373,6 @@
             </div>
         </div>
     </section>
-
     <section class="contact-section" id="contacto">
         <h2 class="es">CONTÁCTENOS</h2>
         <h2 class="en">CONTACT US</h2>
@@ -393,10 +384,11 @@
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126916.74051660485!2d-74.14556619726563!3d4.658462200000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9bfd5689d4c7%3A0x8c7b8f0b5c4e7d5a!2sBogot%C3%A1%2C%20Colombia!5e0!3m2!1ses!2sco!4v1693780000000!5m2!1ses!2sco" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </section>
-
     <section id="tecnologias" style="padding: 4rem 0; margin: 0;">
-        <h2 class="es" style="text-align: center; display: block; margin-bottom: 2rem; padding: 0 3rem;">TECNOLOGÍAS QUE MANEJAMOS</h2>
-        <h2 class="en" style="text-align: center; display: block; margin-bottom: 2rem; padding: 0 3rem;">TECHNOLOGIES WE WORK WITH</h2>
+        <div style="text-align: center; display: block; margin-bottom: 2rem; padding: 0 3rem;">
+            <h2 class="es" style="display: inline-block;">TECNOLOGÍAS QUE MANEJAMOS</h2>
+            <h2 class="en" style="display: none; inline-block;">TECHNOLOGIES WE WORK WITH</h2>
+        </div>
     </section>
     <div class="barra-marcas">
         <div class="marcas-deslizante">
@@ -426,7 +418,6 @@
             <div class="marca-item"><img src="chatgpt.jpeg" alt="ChatGPT" loading="lazy"></div>
         </div>
     </div>
-
     <footer>
         <p class="es">&copy; 2026 OPERAI COLOMBIA. TODOS LOS DERECHOS RESERVADOS.</p>
         <p class="en">&copy; 2026 OPERAI COLOMBIA. ALL RIGHTS RESERVED.</p>
@@ -443,7 +434,6 @@
             punto.style.height = punto.style.width;
             contenedorPuntos.appendChild(punto);
         }
-
         const observadorSecciones = new IntersectionObserver((entradas) => {
             entradas.forEach(entrada => {
                 if (entrada.isIntersecting) entrada.target.classList.add('visible');
@@ -453,7 +443,6 @@
             observadorSecciones.observe(sec);
             sec.classList.add('visible');
         });
-
         const observadorTarjetas = new IntersectionObserver((entradas) => {
             entradas.forEach((entrada, idx) => {
                 if (entrada.isIntersecting) {
@@ -464,7 +453,6 @@
         document.querySelectorAll('.service-card').forEach(tarjeta => {
             observadorTarjetas.observe(tarjeta);
         });
-
         const musica = document.getElementById('musica');
         const botonMusica = document.getElementById('botonMusica');
         let reproduciendo = false;
@@ -477,22 +465,19 @@
             reproduciendo ? (musica.pause(), botonMusica.textContent = '▶') : (musica.play(), botonMusica.textContent = '⏸');
             reproduciendo = !reproduciendo;
         });
-
         const btnIdioma = document.getElementById('btnIdioma');
         let esEspanol = true;
         btnIdioma.addEventListener('click', () => {
             esEspanol = !esEspanol;
-            document.querySelectorAll('.es').forEach(el => el.style.display = esEspanol ? 'inline' : 'none');
-            document.querySelectorAll('.en').forEach(el => el.style.display = esEspanol ? 'none' : 'inline');
+            document.querySelectorAll('.es').forEach(el => el.style.display = esEspanol ? 'inline-block' : 'none');
+            document.querySelectorAll('.en').forEach(el => el.style.display = esEspanol ? 'none' : 'inline-block');
             btnIdioma.textContent = esEspanol ? '🌐 EN' : '🌐 ES';
         });
-
         const jarvisBoton = document.getElementById('jarvisBoton');
         const jarvisVentana = document.getElementById('jarvisVentana');
         const jarvisCerrar = document.getElementById('jarvisCerrar');
         const jarvisCuerpo = document.getElementById('jarvisCuerpo');
         let jarvisAbierto = false, vozActiva = true;
-
         function hablar(texto) {
             if (!vozActiva) return;
             const corregido = texto.replace(/OPERAI/g, 'Ó-pera-i').replace(/OPERAI COLOMBIA/g, 'Ó-pera-i Colombia');
@@ -507,7 +492,6 @@
             if (vozColombiana) mensaje.voice = vozColombiana;
             window.speechSynthesis.speak(mensaje);
         }
-
         function agregarMensaje(texto) {
             const div = document.createElement('div');
             div.className = 'jarvis-mensaje';
@@ -515,7 +499,6 @@
             jarvisCuerpo.appendChild(div);
             jarvisCuerpo.scrollTop = jarvisCuerpo.scrollHeight;
         }
-
         function agregarOpcion(texto, accion) {
             const btn = document.createElement('button');
             btn.className = 'jarvis-opcion';
@@ -523,7 +506,6 @@
             btn.onclick = accion;
             jarvisCuerpo.appendChild(btn);
         }
-
         function inicializarJarvis() {
             jarvisCuerpo.innerHTML = '';
             agregarMensaje('¡Hola! Soy el asistente de OPERAI COLOMBIA. ¿En qué puedo ayudarle hoy?');
@@ -534,58 +516,7 @@
             });
             agregarOpcion('📍 Ubicación y contacto', () => {
                 agregarMensaje('Estamos en Colombia. Teléfono: +57 317 423 5796. Correo: operaicolombia@gmail.com');
-                hablar('Estamos en Colombia. Teléfono: más cinco siete, tres uno siete,cuatro dos tres, cinco siete nueve seis. Correo: operaicolombia@gmail.com');
+                hablar('Estamos en Colombia. Teléfono: más cinco siete, tres uno siete, cuatro dos tres, cinco siete nueve seis. Correo: operaicolombia@gmail.com');
             });
             agregarOpcion('🔊 Activar / Desactivar voz', () => {
-                vozActiva = !vozActiva;
-                agregarMensaje(vozActiva ? '✅ Voz activada. Jarvis hablará.' : '🔇 Voz desactivada. Jarvis estará en silencio.');
-            });
-            agregarOpcion('❓ Qué es OPERAI', () => {
-                agregarMensaje('OPERAI COLOMBIA es su aliado tecnológico. Brindamos soluciones en soporte, consultoría, análisis de datos y capacitación para empresas en Colombia.');
-                hablar('Ó-pera-i Colombia es su aliado tecnológico. Brindamos soluciones en soporte, consultoría, análisis de datos y capacitación para empresas en Colombia.');
-            });
-        }
-
-        jarvisBoton.addEventListener('click', () => {
-            jarvisAbierto = !jarvisAbierto;
-            if (jarvisAbierto) {
-                jarvisVentana.classList.add('abierta');
-                if (jarvisCuerpo.children.length === 0) {
-                    inicializarJarvis();
-                }
-            } else {
-                jarvisVentana.classList.remove('abierta');
-                window.speechSynthesis.cancel();
-            }
-        });
-
-        jarvisCerrar.addEventListener('click', () => {
-            jarvisAbierto = false;
-            jarvisVentana.classList.remove('abierta');
-            window.speechSynthesis.cancel();
-        });
-
-        const cursorPunto = document.querySelector('.cursor-dot');
-        const cursorAnillo = document.querySelector('.cursor-ring');
-        document.addEventListener('mousemove', (e) => {
-            cursorPunto.style.left = e.pageX + 'px';
-            cursorPunto.style.top = e.pageY + 'px';
-            setTimeout(() => {
-                cursorAnillo.style.left = e.pageX + 'px';
-                cursorAnillo.style.top = e.pageY + 'px';
-            }, 80);
-        });
-        document.addEventListener('mousedown', () => cursorAnillo.classList.add('hover'));
-        document.addEventListener('mouseup', () => cursorAnillo.classList.remove('hover'));
-
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then(() => console.log('✅ App instalable registrada'))
-                    .catch(() => console.log('⚠️ Sin servicio de App'));
-            });
-        }
-    </script>
-</body>
-</html>
-                       
+               
