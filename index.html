@@ -302,7 +302,7 @@
             <a href="#contacto" class="en">CONTACT</a>
         </nav>
     </header>
-    <section class="hero" id="inicio">
+        <section class="hero" id="inicio">
         <div class="hero-texto">
             <h1 class="es">OPERAI<br>COLOMBIA</h1>
             <h1 class="en">OPERAI<br>COLOMBIA</h1>
@@ -422,7 +422,7 @@
         <p class="es">&copy; 2026 OPERAI COLOMBIA. TODOS LOS DERECHOS RESERVADOS.</p>
         <p class="en">&copy; 2026 OPERAI COLOMBIA. ALL RIGHTS RESERVED.</p>
     </footer>
-    <script>
+        <script>
         const contenedorPuntos = document.getElementById('puntosJarvis');
         for (let i = 0; i < 60; i++) {
             const punto = document.createElement('div');
@@ -434,6 +434,7 @@
             punto.style.height = punto.style.width;
             contenedorPuntos.appendChild(punto);
         }
+
         const observadorSecciones = new IntersectionObserver((entradas) => {
             entradas.forEach(entrada => {
                 if (entrada.isIntersecting) entrada.target.classList.add('visible');
@@ -443,6 +444,7 @@
             observadorSecciones.observe(sec);
             sec.classList.add('visible');
         });
+
         const observadorTarjetas = new IntersectionObserver((entradas) => {
             entradas.forEach((entrada, idx) => {
                 if (entrada.isIntersecting) {
@@ -453,6 +455,7 @@
         document.querySelectorAll('.service-card').forEach(tarjeta => {
             observadorTarjetas.observe(tarjeta);
         });
+
         const musica = document.getElementById('musica');
         const botonMusica = document.getElementById('botonMusica');
         let reproduciendo = false;
@@ -465,6 +468,7 @@
             reproduciendo ? (musica.pause(), botonMusica.textContent = '▶') : (musica.play(), botonMusica.textContent = '⏸');
             reproduciendo = !reproduciendo;
         });
+
         const btnIdioma = document.getElementById('btnIdioma');
         let esEspanol = true;
         btnIdioma.addEventListener('click', () => {
@@ -473,11 +477,13 @@
             document.querySelectorAll('.en').forEach(el => el.style.display = esEspanol ? 'none' : 'inline-block');
             btnIdioma.textContent = esEspanol ? '🌐 EN' : '🌐 ES';
         });
+
         const jarvisBoton = document.getElementById('jarvisBoton');
         const jarvisVentana = document.getElementById('jarvisVentana');
         const jarvisCerrar = document.getElementById('jarvisCerrar');
         const jarvisCuerpo = document.getElementById('jarvisCuerpo');
         let jarvisAbierto = false, vozActiva = true;
+
         function hablar(texto) {
             if (!vozActiva) return;
             const corregido = texto.replace(/OPERAI/g, 'Ó-pera-i').replace(/OPERAI COLOMBIA/g, 'Ó-pera-i Colombia');
@@ -492,6 +498,7 @@
             if (vozColombiana) mensaje.voice = vozColombiana;
             window.speechSynthesis.speak(mensaje);
         }
+
         function agregarMensaje(texto) {
             const div = document.createElement('div');
             div.className = 'jarvis-mensaje';
@@ -499,6 +506,7 @@
             jarvisCuerpo.appendChild(div);
             jarvisCuerpo.scrollTop = jarvisCuerpo.scrollHeight;
         }
+
         function agregarOpcion(texto, accion) {
             const btn = document.createElement('button');
             btn.className = 'jarvis-opcion';
@@ -506,6 +514,7 @@
             btn.onclick = accion;
             jarvisCuerpo.appendChild(btn);
         }
+
         function inicializarJarvis() {
             jarvisCuerpo.innerHTML = '';
             agregarMensaje('¡Hola! Soy el asistente de OPERAI COLOMBIA. ¿En qué puedo ayudarle hoy?');
@@ -519,4 +528,54 @@
                 hablar('Estamos en Colombia. Teléfono: más cinco siete, tres uno siete, cuatro dos tres, cinco siete nueve seis. Correo: operaicolombia@gmail.com');
             });
             agregarOpcion('🔊 Activar / Desactivar voz', () => {
-               
+                vozActiva = !vozActiva;
+                agregarMensaje(vozActiva ? '✅ Voz ACTIVADA.' : '🔇 Voz DESACTIVADA.');
+            });
+        }
+
+        jarvisBoton.addEventListener('click', () => {
+            jarvisAbierto = !jarvisAbierto;
+            jarvisVentana.classList.toggle('abierta', jarvisAbierto);
+            if (jarvisAbierto) inicializarJarvis();
+        });
+        jarvisCerrar.addEventListener('click', () => {
+            jarvisAbierto = false;
+            jarvisVentana.classList.remove('abierta');
+        });
+
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorRing = document.querySelector('.cursor-ring');
+        document.addEventListener('mousemove', (e) => {
+            cursorDot.style.left = e.clientX + 'px';
+            cursorDot.style.top = e.clientY + 'px';
+            setTimeout(() => {
+                cursorRing.style.left = e.clientX + 'px';
+                cursorRing.style.top = e.clientY + 'px';
+            }, 80);
+        });
+        document.querySelectorAll('a, button, .marca-item').forEach(el => {
+            el.addEventListener('mouseenter', () => cursorRing.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
+        });
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').catch(() => {});
+            });
+        }
+        let instalacionPendiente;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            instalacionPendiente = e;
+            document.getElementById('btnInstalar').classList.add('mostrar');
+        });
+        document.getElementById('btnInstalar').addEventListener('click', async () => {
+            if (!instalacionPendiente) return;
+            instalacionPendiente.prompt();
+            const { outcome } = await instalacionPendiente.userChoice;
+            instalacionPendiente = null;
+            document.getElementById('btnInstalar').classList.remove('mostrar');
+        });
+    </script>
+</body>
+</html>
